@@ -7,7 +7,7 @@
   
   body {
       background: white;
-      font-family: 'Garamond', serif;
+      font-family: "Poppins", sans-serif;
       height: 100vh;
       font-size: 1.2em;
     }
@@ -194,7 +194,7 @@
         background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         font-size: 1em;
-        font-family: 'Garamond', serif;
+        font-family: "Poppins", sans-serif;
     }
 
     .menu ul {
@@ -267,7 +267,7 @@
       font-weight: normal;
       display: block;
       transition: color 0.2s, background-color 0.2s;
-      font-family: 'Garamond', serif;
+      font-family: "Poppins", sans-serif;
     }
     
     .topnav p {
@@ -306,14 +306,14 @@
     
     h1 {
       font-size: 1.2em;
-      font-family: 'Garamond', serif;
+      font-family: "Poppins", sans-serif;
     }
     
     p {
       font-size: 1em;
       line-height: 30px;
       text-align: justify;
-      font-family: 'Garamond', serif;
+      font-family: "Poppins", sans-serif;
     }
     
     @media (max-width: 560px){
