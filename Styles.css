@@ -184,26 +184,36 @@
     }
        
     .menu {
-        position: fixed;
-        display: block;
-        z-index: 1;
-        top: 10px;
-        width: 100vw;
-        height: 30px;
-        background: rgb(255, 255, 255);
-        color: rgb(0, 0, 0);
-        font-size: 0.9em;
-        font-family: "Poppins", sans-serif;
-    }
-
-    .menu ul {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .menu li {
-        list-style: none;
-    }
+      position: fixed;
+      display: flex;  /* Use flexbox */
+      z-index: 1;
+      top: 10px;
+      width: 100vw;
+      height: 30px;
+      background: transparent;  /* Transparent background */
+      color: rgb(0, 0, 0);
+      font-size: 0.9em;
+      font-family: "Poppins", sans-serif;
+      align-items: center;  /* Align items vertically */
+      padding: 0 20px; /* Add some horizontal padding */
+  }
+  
+  .menu ul {
+      display: flex;
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+  }
+  
+  .menu li:first-child {
+      margin-right: auto;  /* Pushes everything else to the right */
+  }
+  
+  .menu li {
+      margin-left: 20px; /* Space between items */
+  }
 
     .menu a {
         color: rgb(0, 0, 0);
