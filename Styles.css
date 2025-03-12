@@ -309,7 +309,8 @@
       font-family: "Poppins", sans-serif;
     }
     
-    p {
+    p {  
+      padding-top: 10px;       
       font-size: 1em;
       line-height: 30px;
       text-align: justify;
