@@ -1,0 +1,316 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Camilo Osorio-Ospina</title>
+    <link rel="stylesheet" href="./Styles.css">
+    <link rel="icon" href="./img/montanhasX.svg">
+
+    <!-- Google Fonts: EB Garamond (for Garamond alternative) -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Nunito Sans (as a free alternative to Futura) -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  
+  
+    <script>
+      // Open the Modal
+      function openModal() {
+        document.getElementById("myModal-x").style.display = "block";
+      }
+      
+      // Close the Modal
+      function closeModal() {
+        document.getElementById("myModal-x").style.display = "none";
+      }
+      
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      
+      // Next/previous controls
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      // Thumbnail image controls
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides2 = document.getElementsByClassName("mySlides-x");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides2.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides2.length}
+        for (i = 0; i < slides2.length; i++) {
+          slides2[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides2[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
+      }
+      </script>
+  
+    <script>
+      function myFunction() {
+       var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    </script>
+  
+  
+  </head>
+
+   
+
+  <body>
+  
+      <header>
+          <nav class="menu">
+              <ul>
+                  <li class="nome"><a href="#hero-image">RAQUEL C. PIZZARDO</a></li>
+                  <li class="link-menu"><a href="#about">About me</a></li>
+                  <li class="link-menu"><a href="#research">Research</a></li>
+                  <li class="link-menu"><a href="#publications">Publications</a></li>
+                  <li class="link-menu"><a href="#teach">Teaching & Outreach</a></li>
+                  <li class="link-menu"><a href="#field">Fieldwork</a></li>
+                  <li class="link-menu"><a href="#cv">CV & Contact</a></li>
+                  <l1 class="link-menu"><a href="pt.html"><img class="br" src="./img/globe-americas.svg" title="Versão em Português"></a></l1>
+              </ul>
+          </nav>
+
+          <nav class="topnav">
+            <p class="active">RAQUEL C. PIZZARDO</p>
+            <div id="myLinks">
+              <a href="#about">About me</a>
+              <a href="#research">Research</a>
+              <a href="#publications">Publications</a>
+              <a href="#teach">Teaching & Outreach</a>
+              <a href="#field">Fieldwork</a>
+              <a href="#cv">CV & Contact</a>
+              <a href="pt.html"><img class="br" src="./img/globe-americas.svg"></a>              
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"><img class="burger" src="./img/burger.svg"></i>
+            </a>
+          </nav>
+
+      </header>
+  
+      <div class="hero-image" id="hero-image">
+        <div class="hero-text">
+              <h1><i>plant evolutionary biologist</i></h1>
+              <p><i>"Discovery consists of seeing what everybody has seen and thinking what nobody has thought"</i><br>
+                <div class="citation-author">- Szent-Györgyi</div></p>
+              <p></p>
+        </div>
+      </div>
+
+      <section class="about" id="about">
+  
+        <h1>About me</h1>
+        <img class="avatar" src="./img/avatar 3.jpg">
+        <p style="text-align:center">My name is Raquel C. Pizzardo and I am currently a PhD candidate at the Ecology and 
+            Evolutionary Biology department at the University of Michigan, USA.
+          </p>
+          
+        <p><b>Education</b></p>
+        <p><b>2022-present</b> PhD in Ecology and Evolutionary Biology, University of Michigan, USA.</p>
+        <p><b>2021-2022</b> MSc. in Ecology and Evolutionary Biology, University of Michigan, USA.</p>
+        <p><b>2017-2021</b> BSc. in Biological Sciences, Universidade de São Paulo, SP, Brazil.</p>
+        <p>  </p>
+        <p><b>Backgroud</b></p>
+        <p class="justificado">Lorem ipsum 1</p>
+            
+
+      </section>
+
+      <section class="research" id="research">
+          <h1>Research</h1>
+          <img class="Interests" src="./img/int.svg">
+
+          <p><b>Experience</b></p>
+
+          <p>Lorem ipsum 2</p>
+
+         
+      </section>
+  
+      <section class="publications" id="publications">
+    
+        <h1>Publications</h1>
+        <img class="cabecalho_img" src="./img/pub.JPG">
+        <p style="text-align:center">Please email me if you would like access to pdf versions.</p>
+        <p></p>
+        <p>lorem ipsum 3.</p>
+
+      </section>
+
+      <section class="teach" id="teach">
+
+        <h1>Teaching & Outreach</h1>
+
+        <img class="cabecalho_img" src="./img/teach.jpg">
+        <p>Lorem ipsum 4</p>
+
+      </section>
+
+      <section class="field" id="field">
+          <h1>Fieldwork</h1>
+        <!-- Images used to open the lightbox -->
+                  <div class="row-x">
+                    <div class="column-x">
+                      <img src="./img/img1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img2.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img3.JPG" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img4.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img5.jpg" onclick="openModal();currentSlide(5)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img6.jpg" onclick="openModal();currentSlide(6)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img7.jpg" onclick="openModal();currentSlide(7)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img8.jpg" onclick="openModal();currentSlide(8)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img9.JPG" onclick="openModal();currentSlide(9)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img12.jpg" onclick="openModal();currentSlide(10)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img13.jpg" onclick="openModal();currentSlide(11)" class="hover-shadow">
+                    </div>
+                    <div class="column-x">
+                      <img src="./img/img14.jpg" onclick="openModal();currentSlide(12)" class="hover-shadow">
+                    </div>
+                  </div>
+    
+              <!-- The Modal/Lightbox -->
+                    <div id="myModal-x" class="modal-x">
+                      <span class="close cursor" onclick="closeModal()">&times;</span>
+                      <div class="modal-content-x">
+    
+                      <div class="mySlides-x">
+                      <div class="numbertext">1 / 12</div>
+                      <img src="./img/img1_wide.jpg" style="width:60%;">
+                      </div>
+    
+                      <div class="mySlides-x">
+                      <div class="numbertext">2 / 12</div>
+                      <img src="./img/img2_wide.jpg" style="width:60%">
+                      </div>
+    
+                      <div class="mySlides-x">
+                      <div class="numbertext">3 / 12</div>
+                      <img src="./img/img3_wide.JPG" style="width:60%">
+                      </div>
+                  
+                      <div class="mySlides-x">
+                      <div class="numbertext">4 / 12</div>
+                      <img src="./img/img4_wide.jpg" style="width:60%">
+                      </div>
+
+                      <div class="mySlides-x">
+                        <div class="numbertext">5 / 12</div>
+                        <img src="./img/img5_wide.jpg" style="width:60%">
+                        </div>
+                      
+                      <div class="mySlides-x">
+                        <div class="numbertext">6 / 12</div>
+                        <img src="./img/img6_wide.jpg" style="width:60%">
+                        </div>
+                    
+                      <div class="mySlides-x">
+                        <div class="numbertext">7 / 12</div>
+                        <img src="./img/img7_wide.jpg" style="width:60%">
+                        </div>
+                  
+                      <div class="mySlides-x">
+                        <div class="numbertext">8 / 12</div>
+                        <img src="./img/img8_wide.jpg" style="width:60%">
+                        </div>
+                
+                      <div class="mySlides-x">
+                        <div class="numbertext">9 / 12</div>
+                        <img src="./img/img9_wide.JPG" style="width:60%">
+                        </div>
+
+                     <div class="mySlides-x">
+                        <div class="numbertext">10 / 12</div>
+                        <img src="./img/img12_wide.jpg" style="width:60%">
+                        </div>
+
+                    <div class="mySlides-x">
+                        <div class="numbertext">11 / 12</div>
+                        <img src="./img/img13_wide.jpg" style="width:60%">
+                        </div>
+
+                    <div class="mySlides-x">
+                        <div class="numbertext">12 / 12</div>
+                        <img src="./img/img14_wide.jpg" style="width:60%">
+                        </div>
+                        
+                    </div>
+
+    
+    
+              <!-- Next/previous controls -->
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    
+              <!-- Caption text -->
+                  <div class="caption-container">
+                  <p id="caption"></p>
+                  </div>
+    
+                              
+              </div>        
+
+
+
+      </section>
+
+      <section class="cv" id="cv">
+          <h1>CV & Contact</h1>
+          <img class="cabecalho_img" src="./img/cv.jpg">
+            <p>  </p>
+            
+            <a href="./img/CV_RCPizzardo.pdf"><button class="button">C.V.</button></a>
+            <p>Please feel free to reach me on twitter, or email: <b>pizzardo@umich.edu</b></p>
+            
+            <div class="icon-rd">
+            <a href="https://twitter.com/"><img class="twitter" src="./img/twitter-brands.svg"></a>
+            <a href="https://github.com/"> <img class="github" src="./img/github-brands.svg"> </a>
+            <a href="https://www.researchgate.net/profile/"> <img class="researchgate" src="./img/researchgate-brands.svg"></a>
+           </div>
+
+           <p><i>March 2025</i></p>
+   
+
+       </section>
+
+    </body></html>
