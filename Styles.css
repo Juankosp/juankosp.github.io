@@ -9,7 +9,7 @@
       background: white;
       font-family: "Poppins", sans-serif;
       height: 100vh;
-      font-size: 0.9em;
+      font-size: 1em;
     }
     a {
       text-decoration: none;
@@ -209,7 +209,7 @@
     .menu a {
         color: rgb(0, 0, 0);
         transition: color 0.2s;
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .menu a:hover {
@@ -305,13 +305,13 @@
     }
     
     h1 {
-      font-size: 0.9em;
+      font-size: 1.2em;
       font-family: "Poppins", sans-serif;
     }
     
     p {  
       padding-top: 10px;       
-      font-size: 0.9em;
+      font-size: 1em;
       line-height: 30px;
       text-align: justify;
       font-family: "Poppins", sans-serif;
