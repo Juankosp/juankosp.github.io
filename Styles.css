@@ -9,7 +9,7 @@
       background: white;
       font-family: "Poppins", sans-serif;
       height: 100vh;
-      font-size: 1.2em;
+      font-size: 0.9em;
     }
     a {
       text-decoration: none;
@@ -148,7 +148,7 @@
     .hero-text h1{
       margin-bottom: 10%;
       font-weight: normal;
-      font-size: 1em;
+      font-size: 0.9em;
     }
 
     .citation-author {
@@ -193,7 +193,7 @@
         height: 50px;
         background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
-        font-size: 1em;
+        font-size: 0.9em;
         font-family: "Poppins", sans-serif;
     }
 
@@ -209,7 +209,7 @@
     .menu a {
         color: rgb(0, 0, 0);
         transition: color 0.2s;
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     .menu a:hover {
@@ -236,7 +236,7 @@
 
     .nome {
         color: white;
-        font-size: 1.2em;
+        font-size: 0.9em;
     }
    
     .topnav {
@@ -274,7 +274,7 @@
       color: white;
       padding: 14px 16px;
       text-decoration: none;
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: normal;
       display: block;
       border-top: 10px;
@@ -305,13 +305,13 @@
     }
     
     h1 {
-      font-size: 1.2em;
+      font-size: 0.9em;
       font-family: "Poppins", sans-serif;
     }
     
     p {  
       padding-top: 10px;       
-      font-size: 1em;
+      font-size: 0.9em;
       line-height: 30px;
       text-align: justify;
       font-family: "Poppins", sans-serif;
@@ -319,7 +319,7 @@
     
     @media (max-width: 560px){
       h1 {
-        font-size: 1.1em;
+        font-size: 0.9em;
       }
       p {
         font-size: 0.9em;
