@@ -75,7 +75,11 @@
       color: #964041;
       text-decoration: none;
     }
-       
+    
+    .content {
+      padding: 10vw;  /* Adds padding only to the text container */
+  }
+    
     .menu {
       position: fixed;
       display: flex;  /* Use flexbox */
