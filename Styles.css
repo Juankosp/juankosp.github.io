@@ -159,17 +159,6 @@
     .about
 
 
-    @media (max-width: 560px){
-      .hero-text {
-        font-size: 1.5em;
-        top: 40%;
-        width: 90vw;
-      }
-      .hero-text p{
-        text-align: center;
-      }
-    }
-
     .avatar {
         height: 200px;
         width: auto;
