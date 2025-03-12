@@ -155,6 +155,10 @@
       font-size: 0.8em;
         
     }
+
+    .about
+
+
     @media (max-width: 560px){
       .hero-text {
         font-size: 1.5em;
@@ -164,6 +168,12 @@
       .hero-text p{
         text-align: center;
       }
+    }
+
+    .avatar {
+        height: 200px;
+        width: auto;
+        border-radius: 50%;
     }
 
     /*Link não visitado */
