@@ -187,9 +187,9 @@
         position: fixed;
         display: block;
         z-index: 1;
-        top: 0px;
+        top: 10px;
         width: 100vw;
-        height: 50px;
+        height: 30px;
         background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         font-size: 0.9em;
