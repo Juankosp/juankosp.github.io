@@ -192,16 +192,7 @@
       text-align: justify;
       font-family: "Poppins", sans-serif;
     }
-    
-    @media (max-width: 560px){
-      h1 {
-        font-size: 0.9em;
-      }
-      p {
-        font-size: 0.9em;
-      }
-    }
-
+  
     .about-me {
       display: flex;
       align-items: center;
@@ -247,5 +238,17 @@
   .about-text a:hover {
       text-decoration: underline;
   }
+    
+
+    @media (max-width: 560px){
+      h1 {
+        font-size: 0.9em;
+      }
+      p {
+        font-size: 0.9em;
+      }
+    }
+
+
   
     
