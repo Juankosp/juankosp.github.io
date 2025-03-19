@@ -235,108 +235,100 @@
       text-decoration: underline;
   }
     
-  .on-tour-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
-/* Images on Both Sides */
-.tour-images {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.tour-images img {
-    width: 200px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* Timeline Container */
+/* Timeline layout */
 .timeline {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 80%;
+  max-width: 1100px; /* Ensures a fixed width for consistency */
+  margin: 50px auto;
+  position: relative;
 }
 
-/* Timeline Block */
+/* Each timeline container */
+.timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+/* Fixed spaces for images, even if they are missing */
+.timeline-space {
+  width: 20%; /* Reserves space for images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensures all blocks align the same way */
 .timeline-block {
-    display: flex;
-    background: #a0422d;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: row; /* Align date and text in a row */
+  align-items: center; /* Vertically align items */
+  width: 60%;
+  background-color: #b55c3e;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: left;
+  color: white;
+  position: relative;
 }
 
-/* Alternate Colors */
-.timeline-block.alt {
-    background: #726f64;
-}
-
-/* Date Section */
+/* Ensure date is always the same width */
 .timeline-date {
-    font-size: 1.2em;
-    font-weight: bold;
-    width: 100px;
+  min-width: 120px; /* Set a fixed width to align text */
+  text-align: right;
+  margin-right: 10px;
 }
 
-/* Content Section */
-.timeline-content h3 {
-    font-size: 1.2em;
-    margin: 0;
+/* Ensure all text inside blocks starts at the same position */
+.timeline-content {
+  flex: 1; /* Take remaining space */
 }
 
+.timeline-content h3,
 .timeline-content p {
-    font-size: 1em;
-    margin: 5px 0 0;
-    line-height: 1.4;
+  margin-left: 0; /* No additional left margin */
+  text-align: left;
+}
+
+/* Image styles */
+.timeline-img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  object-fit: cover;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .on-tour-container {
-        flex-direction: column;
-        align-items: center;
-    }
+  .timeline-container {
+      flex-direction: column;
+      align-items: center;
+  }
 
-    .tour-images {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+  .timeline-space {
+      width: 100%;
+      justify-content: center;
+  }
 
-    .tour-images img {
-        width: 100px;
-    }
+  .timeline-img {
+      width: 80%;
+      max-width: none;
+      margin: 10px 0;
+  }
 
-    .timeline-block {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .timeline-block {
+      width: 90%;
+      text-align: center;
+  }
 
-    .timeline-date {
-        width: auto;
-    }
+  .timeline-content h3,
+  .timeline-content p {
+      margin-left: 0;
+      text-align: center;
+  }
 }
-
-    @media (max-width: 560px){
-      h1 {
-        font-size: 0.9em;
-      }
-      p {
-        font-size: 0.9em;
-      }
-    }
 
 
   
