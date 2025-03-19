@@ -274,6 +274,19 @@
   position: relative;
 }
 
+.timeline-block-alt {
+  display: flex;
+  flex-direction: row; /* Align date and text in a row */
+  align-items: center; /* Vertically align items */
+  width: 60%;
+  background-color: #743131;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: left;
+  color: white;
+  position: relative;
+}
+
 /* Ensure date is always the same width */
 .timeline-date {
   min-width: 120px; /* Set a fixed width to align text */
@@ -329,6 +342,7 @@
       text-align: center;
   }
 }
+
 
 
   
