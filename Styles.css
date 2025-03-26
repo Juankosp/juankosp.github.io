@@ -345,7 +345,7 @@
 
 /* top Image home*/
 .home .top-image {
-  background-image: url("/img/pse_h.png");
+  background-image: url("/img/pse_h.webp");
   aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
   width: 100%; /* Full width */
   background-position: center;
@@ -369,7 +369,7 @@
 
 /* Top Image tour*/
 .tour .top-image {
-  background-image: url("/img/crane_h.png");
+  background-image: url("/img/crane_h.webp");
   aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
   width: 100%; /* Full width */
   background-position: center;
@@ -382,7 +382,7 @@
 
 /* Bottom Image tour*/
 .tour .bottom-image {
-  background-image: url("/img/crane_f.png");
+  background-image: url("/img/crane_f.webp");
   aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
   width: 100%; /* Full width */
   background-position: center;
