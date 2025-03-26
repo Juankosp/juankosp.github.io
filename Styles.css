@@ -390,5 +390,100 @@
   background-size: cover;
   position: relative;
 }  
-  
+
+/* Top Image cv*/
+.cv .top-image {
+  background-image: url("/img/pac_h.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: 50px;
+}
+
+
+/* Bottom Image tour*/
+.cv .bottom-image {
+  background-image: url("/img/pac_f.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: relative;
+}  
+
+/* Top Image products*/
+.products .top-image {
+  background-image: url("/img/jac_h.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: 50px;
+}
+
+
+/* Bottom Image products*/
+.products .bottom-image {
+  background-image: url("/img/jac_f.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: relative;
+}  
+
+/* Top Image fieldwork*/
+.fieldwork .top-image {
+  background-image: url("/img/gus_h.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: 50px;
+}
+
+
+/* Bottom Image fieldwork*/
+.fieldwork .bottom-image {
+  background-image: url("/img/gus_f.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: relative;
+}  
+
+/* Top Image about me*/
+.about .top-image {
+  background-image: url("/img/me_h.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: 50px;
+}
+
+
+/* Bottom Image about me*/
+.about .bottom-image {
+  background-image: url("/img/me_f.webp");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: relative;
+}  
     

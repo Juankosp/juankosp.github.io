@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Camilo Osorio Ospina</title>
+    <link rel="stylesheet" href="./Styles.css">
+    <link rel="icon" href="/img/cecropiaicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+  
+  
+    <script>
+      // Open the Modal
+      function openModal() {
+        document.getElementById("myModal-x").style.display = "block";
+      }
+      
+      // Close the Modal
+      function closeModal() {
+        document.getElementById("myModal-x").style.display = "none";
+      }
+      
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      
+      // Next/previous controls
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      // Thumbnail image controls
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides2 = document.getElementsByClassName("mySlides-x");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides2.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides2.length}
+        for (i = 0; i < slides2.length; i++) {
+          slides2[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides2[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
+      }
+      </script>
+  
+    <script>
+      function myFunction() {
+       var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    </script>
+  
+  
+  </head>
+
+   
+
+  <body class="about">
+  
+    <header>
+      <nav class="menu">
+          <ul>
+              <li class="nome"><a href="/index.html">Juan Camilo Osorio Ospina</a></li>
+              <li class="link-menu"><a href="/about-me.html">About me</a></li>
+              <li class="link-menu"><a href="/products.html">Products</a></li>
+              <li class="link-menu"><a href="/on-tour.html">On Tour</a></li>
+              <li class="link-menu"><a href="/fieldwork.html">Fieldwork</a></li>
+              <li class="link-menu"><a href="/CV.html">CV</a></li>
+          </ul>
+      </nav>
+
+      <nav class="topnav">
+        <p class="active">Juan Camilo Osorio Ospina</p>
+        <div id="myLinks">
+          <a href="/about-me.html">About me</a>
+          <a href="/products.html">Products</a>
+          <a href="/on-tour.html">On tour</a>
+          <a href="/fieldwork.html">Fieldwork</a>
+          <a href="/CV.html">CV</a>         
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"><img class="burger" src="/img/hamburger-menu.svg"></i>
+        </a>
+      </nav>
+
+  </header>
+  
+      <div class="top-image"></div>
+      
+        
+    
+    <div class="bottom-image"></div>
+
+    </body></html>
