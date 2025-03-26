@@ -454,7 +454,7 @@
 
 /* Bottom Image fieldwork*/
 .fieldwork .bottom-image {
-  background-image: url("/img/gus_f.webp");
+  background-image: url("/img/guf_f.webp");
   aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
   width: 100%; /* Full width */
   background-position: center;
