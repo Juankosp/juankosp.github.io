@@ -343,6 +343,7 @@
   }
 }
 
+/* top Image home*/
 .home .top-image {
   background-image: url("/img/pse_h.png");
   aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
@@ -355,7 +356,7 @@
 }
 
 
-/* Bottom Image */
+/* Bottom Image home*/
 .home .bottom-image {
   background-image: url("/img/pse_f.webp");
   aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
@@ -366,5 +367,28 @@
   position: relative;
 }
 
+/* Top Image tour*/
+.tour .top-image {
+  background-image: url("/img/crane_h.png");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: 50px;
+}
+
+
+/* Bottom Image tour*/
+.tour .bottom-image {
+  background-image: url("/img/crane_f.png");
+  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+  width: 100%; /* Full width */
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: relative;
+}  
   
     
