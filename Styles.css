@@ -246,7 +246,7 @@
 /* Each timeline container */
 .timeline-container {
   display: flex;
-  align-items: center; /* Center images vertically with blocks */
+  align-items: stretch; /* Ensure blocks & images match height */
   justify-content: center;
   margin: 0; /* Removes vertical space */
   position: relative;
@@ -258,7 +258,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Matches container height */
   padding: 0 15px; /* Adds space on both left & right */
 }
 
@@ -275,7 +274,8 @@
   text-align: left;
   color: white;
   position: relative;
-  height: 100%; /* Ensures block height matches images */
+  min-height: 150px; /* Ensures blocks expand to remove gaps */
+  flex-grow: 1; /* Forces blocks to fill vertical space */
 }
 
 /* Alternate block color */
@@ -307,6 +307,7 @@
   max-width: 200px;
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Ensures proper image fit */
+  align-self: center; /* Centers images vertically */
 }
 
 /* Responsive Design: Mobile (≤768px) */
@@ -343,6 +344,7 @@
       text-align: center;
   }
 }
+
 
 
 /* top Image home*/
