@@ -274,7 +274,7 @@
   text-align: left;
   color: white;
   position: relative;
-  min-height: 150px; /* Ensures blocks expand to remove gaps */
+  min-height: 200px; /* Ensures blocks expand to remove gaps */
   flex-grow: 1; /* Forces blocks to fill vertical space */
 }
 
