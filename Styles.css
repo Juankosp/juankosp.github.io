@@ -237,7 +237,7 @@
     
 /* Timeline layout */
 .timeline {
-  width: 80%;
+  width: 90%;
   max-width: 1100px; /* Ensures a fixed width for consistency */
   margin: 50px auto;
   position: relative;
@@ -274,7 +274,7 @@
   text-align: left;
   color: white;
   position: relative;
-  min-height: 200px; /* Ensures blocks expand to remove gaps */
+  min-height: 250px; /* Ensures blocks expand to remove gaps */
   flex-grow: 1; /* Forces blocks to fill vertical space */
 }
 
