@@ -246,62 +246,58 @@
 /* Each timeline container */
 .timeline-container {
   display: flex;
-  align-items: center;
+  align-items: center; /* Center images vertically with blocks */
   justify-content: center;
-  margin: 20px 0;
+  margin: 0; /* Removes vertical space */
   position: relative;
 }
 
-/* Fixed spaces for images, even if they are missing */
+/* Fixed spaces for images (both left & right) */
 .timeline-space {
-  width: 20%; /* Reserves space for images */
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%; /* Matches container height */
+  padding: 0 15px; /* Adds space on both left & right */
 }
 
-/* Ensures all blocks align the same way */
-.timeline-block {
+/* Timeline blocks */
+.timeline-block,
+.timeline-block-alt {
   display: flex;
-  flex-direction: row; /* Align date and text in a row */
-  align-items: center; /* Vertically align items */
+  flex-direction: row;
+  align-items: center;
   width: 60%;
   background-color: #b55c3e;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 0; /* Sharp edges */
   text-align: left;
   color: white;
   position: relative;
+  height: 100%; /* Ensures block height matches images */
 }
 
+/* Alternate block color */
 .timeline-block-alt {
-  display: flex;
-  flex-direction: row; /* Align date and text in a row */
-  align-items: center; /* Vertically align items */
-  width: 60%;
   background-color: #743131;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: left;
-  color: white;
-  position: relative;
 }
 
-/* Ensure date is always the same width */
+/* Date formatting */
 .timeline-date {
-  min-width: 120px; /* Set a fixed width to align text */
+  min-width: 120px;
   text-align: right;
   margin-right: 10px;
 }
 
-/* Ensure all text inside blocks starts at the same position */
+/* Text content formatting */
 .timeline-content {
-  flex: 1; /* Take remaining space */
+  flex: 1;
 }
 
 .timeline-content h3,
 .timeline-content p {
-  margin-left: 0; /* No additional left margin */
+  margin-left: 0;
   text-align: left;
 }
 
@@ -309,29 +305,34 @@
 .timeline-img {
   width: 100%;
   max-width: 200px;
-  height: auto;
-  object-fit: cover;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensures proper image fit */
 }
 
-/* Responsive Design */
+/* Responsive Design: Mobile (≤768px) */
 @media (max-width: 768px) {
   .timeline-container {
       flex-direction: column;
       align-items: center;
   }
 
+  /* Keep images in place */
   .timeline-space {
-      width: 100%;
+      width: auto; /* Keeps original width */
       justify-content: center;
+      padding: 0; /* Remove extra padding for mobile */
   }
 
   .timeline-img {
-      width: 80%;
-      max-width: none;
-      margin: 10px 0;
+      width: 100%; /* Maintains full width of its container */
+      max-width: 200px;
+      height: auto; /* Prevents distortion */
+      margin: 0; /* No additional margins */
   }
 
-  .timeline-block {
+  /* Make only blocks wider and center-aligned */
+  .timeline-block,
+  .timeline-block-alt {
       width: 90%;
       text-align: center;
   }
@@ -342,6 +343,7 @@
       text-align: center;
   }
 }
+
 
 /* top Image home*/
 .home .top-image {
