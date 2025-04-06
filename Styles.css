@@ -393,7 +393,7 @@ position: relative;
 
 /* Top Image tour*/
 .tour .top-image {
-background-image: url("/img/crane_h.webp");
+background-image: url("https://juankosp.github.io/img/crane_h.webp");
 aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
 width: 100%; /* Full width */
 background-position: center;
@@ -403,10 +403,16 @@ position: relative;
 margin-top: 50px;
 }
 
+@media (max-width: 500px) {
+.tour .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
 
 /* Bottom Image tour*/
 .tour .bottom-image {
-background-image: url("/img/crane_f.webp");
+background-image: url("https://juankosp.github.io/img/crane_f.webp");
 aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
 width: 100%; /* Full width */
 background-position: center;
@@ -415,6 +421,11 @@ background-size: cover;
 position: relative;
 }  
 
+@media (max-width: 500px) {
+.tour .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
 /* Top Image cv*/
 .cv .top-image {
 background-image: url("/img/pac_h.webp");
@@ -602,3 +613,80 @@ position: relative;
     color: #606C38;
   }
 
+@media (max-width: 500px) {
+.cv .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
+
+@media (max-width: 500px) {
+.cv .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
+
+@media (max-width: 500px) {
+.cv .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
+
+@media (max-width: 500px) {
+.cv .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
+
+@media (max-width: 500px) {
+.fieldwork .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
+
+@media (max-width: 500px) {
+.fieldwork .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
+
+@media (max-width: 500px) {
+.products .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
+
+@media (max-width: 500px) {
+.products .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
+
+@media (max-width: 500px) {
+.home .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
+
+@media (max-width: 500px) {
+.home .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
+
+@media (max-width: 500px) {
+.about .top-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+  margin-top: 20px; /* Reduce the margin to bring the image closer */
+}
+}
+
+@media (max-width: 500px) {
+.about .bottom-image {
+  aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
+}
+}
