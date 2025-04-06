@@ -1,493 +1,584 @@
 /* soft reset do css*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-      background: white;
-      font-family: "Poppins", sans-serif;
-      height: 100vh;
-      font-size: 1em;
-    }
-    a {
-      text-decoration: none;
-    }
-        
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-   .hero-image {
-        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/img/bg.webp");
-        height: 400px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-      }
+body {
+    background: white;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    font-size: 1em;
+  }
+  a {
+    text-decoration: none;
+  }
       
 
-    .avatar {
-        height: 200px;
-        width: auto;
-        border-radius: 70%;
-    }
-
-    /*Link não visitado */
-    a:link {
-      color: #283610;
-      text-decoration: none;
-    }
-     
-    /*Link já visitado*/
-    a:visited {
-      color: #283610;
-      text-decoration: none;
-    }
-     
-    /*Quando o mouse passa por cima*/
-    a:hover {
-      color: #606C38;
-      text-decoration: none;
+ .hero-image {
+      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("/img/bg.webp");
+      height: 400px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
     }
     
-    .content {
-      padding: 10vw;  /* Adds padding only to the text container */
-  }
-    
-    .menu {
-      position: fixed;
-      display: flex;  /* Use flexbox */
-      z-index: 1;
-      top: 0px;
-      width: 100vw;
-      height: 50px;
-      background: rgb(255, 255, 255);  /* Transparent background */
-      color: rgb(0, 0, 0);
-      font-size: 0.9em;
-      font-family: "Poppins", sans-serif;
-      align-items: center;  /* Align items vertically */
-      padding: 0 20px; /* Add some horizontal padding */
-  }
-  
-  .menu ul {
-      display: flex;
-      list-style: none;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-  }
-  
-  .menu li:first-child {
-      margin-right: auto;  /* Pushes everything else to the right */
-  }
-  
-  .menu li {
-      margin-left: 20px; /* Space between items */
-  }
 
-    .menu a {
-        color: rgb(0, 0, 0);
-        transition: color 0.2s;
-        font-size: 1em;
-    }
-
-    .menu a:hover {
-        color: #606C38;
-    }
-
-    .menu img {
-      padding-top: 5px;
-      height: 22px;
+  .avatar {
+      height: 200px;
       width: auto;
-      opacity: 0.5;
-      transition: 0.2s;
-     }
+      border-radius: 70%;
+  }
 
-    .menu img:hover{
-      opacity: 1;
-    }
-
-    @media (max-width: 560px) {
-      .menu {
-        display: none;
-      }
-    }
-
-    .nome {
-        color: white;
-        font-size: 0.9em;
-    }
+  /*Link não visitado */
+  a:link {
+    color: #283610;
+    text-decoration: none;
+  }
    
-    .topnav {
-      overflow: hidden;
-      background-color: rgb(255, 255, 255);
-      position: fixed;
-      display: block;
-      width: 100vw;
-      top: 0;
-      z-index: 1;
-    }
-    
-    @media (min-width: 560px) {
-      .topnav {
-        display: none;
-      }
-    }
-    
-    .topnav #myLinks {
+  /*Link já visitado*/
+  a:visited {
+    color: #283610;
+    text-decoration: none;
+  }
+   
+  /*Quando o mouse passa por cima*/
+  a:hover {
+    color: #606C38;
+    text-decoration: none;
+  }
+  
+  .content {
+    padding: 10vw;  /* Adds padding only to the text container */
+}
+  
+  .menu {
+    position: fixed;
+    display: flex;  /* Use flexbox */
+    z-index: 1;
+    top: 0px;
+    width: 100vw;
+    height: 50px;
+    background: rgb(255, 255, 255);  /* Transparent background */
+    color: rgb(0, 0, 0);
+    font-size: 0.9em;
+    font-family: "Poppins", sans-serif;
+    align-items: center;  /* Align items vertically */
+    padding: 0 20px; /* Add some horizontal padding */
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.menu li:first-child {
+    margin-right: auto;  /* Pushes everything else to the right */
+}
+
+.menu li {
+    margin-left: 20px; /* Space between items */
+}
+
+  .menu a {
+      color: rgb(0, 0, 0);
+      transition: color 0.2s;
+      font-size: 1em;
+  }
+
+  .menu a:hover {
+      color: #606C38;
+  }
+
+  .menu img {
+    padding-top: 5px;
+    height: 22px;
+    width: auto;
+    opacity: 0.5;
+    transition: 0.2s;
+   }
+
+  .menu img:hover{
+    opacity: 1;
+  }
+
+  @media (max-width: 560px) {
+    .menu {
       display: none;
     }
-    
-    .topnav a {
-      color: white;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: .11em;
-      font-weight: normal;
-      display: block;
-      transition: color 0.2s, background-color 0.2s;
-      font-family: "Poppins", sans-serif;
-    }
-    
-    .topnav p {
-      color: white;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 0.9em;
-      font-weight: normal;
-      display: block;
-      border-top: 10px;
-    }
-    
-    .icon {
-      background: rgba(255, 255, 255, 0);
-      color: white;
-      display: block;
-      position: absolute;
-      right: 10px;
-      top: 10px;
-    }
+  }
 
-    
-    .topnav a:hover {
-      color: #606C38;
+  .nome {
+      color: white;
+      font-size: 0.9em;
+  }
+ 
+  .topnav {
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    display: block;
+    width: 100vw;
+    top: 0;
+    z-index: 1;
+  }
+  
+  @media (min-width: 560px) {
+    .topnav {
+      display: none;
     }
-    
-    .active {
-      background-color: rgba(255, 255, 255, 0);
-      font-weight: bold;
-      color: black;
-    }
-    
-    h1 {
-      font-size: 1.2em;
-      font-family: "Poppins", sans-serif;
-    }
-    
-    p {  
-      padding-top: 10px;       
-      font-size: 1em;
-      line-height: 30px;
-      text-align: justify;
-      font-family: "Poppins", sans-serif;
-    }
-  
-    .about-me {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px; /* Space between image and text */
-      padding: 10vw;
-      background: white;
-      border-radius: 12px;
   }
   
-  /* Profile Photo (Rectangular, Not Circular) */
-  .profile-photo {
-      width: 500px;
-      height: auto;
-      object-fit: cover;
+  .topnav #myLinks {
+    display: none;
   }
   
-  /* About Me Text */
-  .about-text {
-      flex: 1;
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: .11em;
+    font-weight: normal;
+    display: block;
+    transition: color 0.2s, background-color 0.2s;
+    font-family: "Poppins", sans-serif;
   }
   
-  .about-text h1 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
+  .topnav p {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: normal;
+    display: block;
+    border-top: 10px;
   }
   
-  .about-text p {
-      font-size: 1em;
-      line-height: 1.6;
-      color: #555;
+  .icon {
+    background: rgba(255, 255, 255, 0);
+    color: white;
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  
+  .topnav a:hover {
+    color: #606C38;
   }
   
-  .about-text a {
-      color: #606C38;
-      text-decoration: none;
+  .active {
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: bold;
+    color: black;
   }
   
-  .about-text a:hover {
-      text-decoration: underline;
+  h1 {
+    font-size: 1.2em;
+    font-family: "Poppins", sans-serif;
   }
-    
+  
+  p {  
+    padding-top: 10px;       
+    font-size: 1em;
+    line-height: 30px;
+    text-align: justify;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .about-me {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Space between image and text */
+    padding: 10vw;
+    background: white;
+    border-radius: 12px;
+}
+
+/* Profile Photo (Rectangular, Not Circular) */
+.profile-photo {
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+}
+
+/* About Me Text */
+.about-text {
+    flex: 1;
+}
+
+.about-text h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.about-text p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+.about-text a {
+    color: #606C38;
+    text-decoration: none;
+}
+
+.about-text a:hover {
+    text-decoration: underline;
+}
+  
 /* Timeline layout */
 .timeline {
-  width: 80%;
-  max-width: 1000px; /* Ensures a fixed width for consistency */
-  margin: 50px auto;
-  position: relative;
+width: 80%;
+max-width: 1000px; /* Ensures a fixed width for consistency */
+margin: 50px auto;
+position: relative;
 }
 
 /* Each timeline container */
 .timeline-container {
-  display: flex;
-  align-items: stretch; /* Ensure blocks & images match height */
-  justify-content: center;
-  margin: 0; /* Removes vertical space */
-  position: relative;
+display: flex;
+align-items: stretch; /* Ensure blocks & images match height */
+justify-content: center;
+margin: 0; /* Removes vertical space */
+position: relative;
 }
 
 /* Fixed spaces for images (both left & right) */
 .timeline-space {
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 15px; /* Adds space on both left & right */
+width: 20%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 0 15px; /* Adds space on both left & right */
 }
 
 /* Timeline blocks */
 .timeline-block,
 .timeline-block-alt {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 60%;
-  background-color: #606C38;
-  padding: 20px;
-  border-radius: 0; /* Sharp edges */
-  text-align: left;
-  color: white;
-  position: relative;
-  min-height: 200px; /* Ensures blocks expand to remove gaps */
-  flex-grow: 1; /* Forces blocks to fill vertical space */
+display: flex;
+flex-direction: row;
+align-items: center;
+width: 60%;
+background-color: #606C38;
+padding: 20px;
+border-radius: 0; /* Sharp edges */
+text-align: left;
+color: white;
+position: relative;
+min-height: 200px; /* Ensures blocks expand to remove gaps */
+flex-grow: 1; /* Forces blocks to fill vertical space */
 }
 
 /* Alternate block color */
 .timeline-block-alt {
-  background-color: #283618;
+background-color: #283618;
 }
 
 /* Date formatting */
 .timeline-date {
-  min-width: 120px;
-  text-align: right;
-  margin-right: 10px;
+min-width: 120px;
+text-align: right;
+margin-right: 10px;
 }
 
 /* Text content formatting */
 .timeline-content {
-  flex: 1;
+flex: 1;
 }
 
 .timeline-content h3,
 .timeline-content p {
-  margin-left: 0;
-  text-align: left;
+margin-left: 0;
+text-align: left;
 }
 
 /* Image styles */
 .timeline-img {
-  width: 100%;
-  max-width: 200px;
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensures proper image fit */
-  align-self: center; /* Centers images vertically */
+width: 100%;
+max-width: 200px;
+height: auto; /* Maintain aspect ratio */
+object-fit: cover; /* Ensures proper image fit */
+align-self: center; /* Centers images vertically */
 }
 
 /* Responsive Design: Mobile (≤768px) */
 @media (max-width: 500px) {
-  .timeline-container {
-      flex-direction: column;
-      align-items: center;
-  }
+.timeline-container {
+    flex-direction: column;
+    align-items: center;
+}
 
-  /* Keep images in place */
-  .timeline-space {
-      width: auto; /* Keeps original width */
-      justify-content: center;
-      padding: 0; /* Remove extra padding for mobile */
-  }
+/* Keep images in place */
+.timeline-space {
+    width: auto; /* Keeps original width */
+    justify-content: center;
+    padding: 0; /* Remove extra padding for mobile */
+}
 
-  .timeline-img {
-      width: 100%; /* Maintains full width of its container */
-      max-width: 200px;
-      height: auto; /* Prevents distortion */
-      margin: 0; /* No additional margins */
-  }
+.timeline-img {
+    width: 100%; /* Maintains full width of its container */
+    max-width: 200px;
+    height: auto; /* Prevents distortion */
+    margin: 0; /* No additional margins */
+}
 
-  /* Make only blocks wider and center-aligned */
-  .timeline-block,
-  .timeline-block-alt {
-      width: 90%;
-      text-align: center;
-  }
+/* Make only blocks wider and center-aligned */
+.timeline-block,
+.timeline-block-alt {
+    width: 90%;
+    text-align: center;
+}
 
-  .timeline-content h3,
-  .timeline-content p {
-      margin-left: 0;
-      text-align: center;
-  }
+.timeline-content h3,
+.timeline-content p {
+    margin-left: 0;
+    text-align: center;
+}
 }
 
 
 
 /* top Image home*/
 .home .top-image {
-  background-image: url("/img/pse_h.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin-top: 50px
+background-image: url("/img/pse_h.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+margin-top: 50px
 }
 
 
 /* Bottom Image home*/
 .home .bottom-image {
-  background-image: url("/img/pse_f.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+background-image: url("/img/pse_f.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
 }
 
 /* Top Image tour*/
 .tour .top-image {
-  background-image: url("/img/crane_h.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin-top: 50px;
+background-image: url("/img/crane_h.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+margin-top: 50px;
 }
 
 
 /* Bottom Image tour*/
 .tour .bottom-image {
-  background-image: url("/img/crane_f.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-  position: relative;
+background-image: url("/img/crane_f.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat; 
+background-size: cover;
+position: relative;
 }  
 
 /* Top Image cv*/
 .cv .top-image {
-  background-image: url("/img/pac_h.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin-top: 50px;
+background-image: url("/img/pac_h.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+margin-top: 50px;
 }
 
 
 /* Bottom Image tour*/
 .cv .bottom-image {
-  background-image: url("/img/pac_f.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-  position: relative;
+background-image: url("/img/pac_f.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat; 
+background-size: cover;
+position: relative;
 }  
 
 /* Top Image products*/
 .products .top-image {
-  background-image: url("/img/jac_h.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin-top: 50px;
+background-image: url("https://juankosp.github.io//img/jac_h.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+margin-top: 50px;
 }
 
 
 /* Bottom Image products*/
 .products .bottom-image {
-  background-image: url("/img/jac_f.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-  position: relative;
+background-image: url("https://juankosp.github.io//img/jac_f.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat; 
+background-size: cover;
+position: relative;
 }  
 
 /* Top Image fieldwork*/
 .fieldwork .top-image {
-  background-image: url("/img/gus_h.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin-top: 50px;
+background-image: url("/img/gus_h.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+margin-top: 50px;
 }
 
 
 /* Bottom Image fieldwork*/
 .fieldwork .bottom-image {
-  background-image: url("/img/guf_f.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-  position: relative;
+background-image: url("/img/guf_f.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat; 
+background-size: cover;
+position: relative;
 }  
 
 /* Top Image about me*/
 .about .top-image {
-  background-image: url("/img/me_h.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin-top: 50px;
+background-image: url("/img/me_h.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+margin-top: 50px;
 }
 
 
 /* Bottom Image about me*/
 .about .bottom-image {
-  background-image: url("/img/me_f.webp");
-  aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
-  width: 100%; /* Full width */
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-  position: relative;
+background-image: url("/img/me_f.webp");
+aspect-ratio: 6 / 1; /* Maintain 6:1 aspect ratio */
+width: 100%; /* Full width */
+background-position: center;
+background-repeat: no-repeat; 
+background-size: cover;
+position: relative;
 }  
-    
+
+.pub {
+    margin-bottom: 1.5rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .pub-title {
+
+  }
+
+  .pub-links {
+    font-size: 0.9em;
+    margin-top: 0.3rem;
+  }
+
+  .pub-links a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #676767;
+  }
+
+  .pub-links a:hover {
+    color: #606C38;
+  }
+
+  .title {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    gap: 10px; /* Space between image and text */
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 5vw;
+    padding-bottom: 3vw;
+    background: white;
+}
+
+  .dataset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .dataset-card {
+    background: #fff;
+    border-radius: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    justify-content: space-between;
+
+  }
+
+  .dataset-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0px;
+    margin-bottom: 1rem;
+  }
+
+  .dataset-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .dataset-citation {
+    font-size: 0.9em;
+    color: #676767;
+    margin-bottom: 0.7rem;
+  }
+
+  .dataset-description {
+    font-size: 0.95em;
+    margin-bottom: 0.8rem;
+  }
+
+  .dataset-links a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #676767;
+    font-size: 0.9em;
+  }
+
+  .dataset-links a:hover {
+    color: #606C38;
+  }
+
