@@ -34,19 +34,19 @@
 
     /*Link não visitado */
     a:link {
-      color: #d96a6e;
+      color: #283610;
       text-decoration: none;
     }
      
     /*Link já visitado*/
     a:visited {
-      color: #d96a6e;
+      color: #283610;
       text-decoration: none;
     }
      
     /*Quando o mouse passa por cima*/
     a:hover {
-      color: #964041;
+      color: #606C38;
       text-decoration: none;
     }
     
@@ -93,7 +93,7 @@
     }
 
     .menu a:hover {
-        color: #d96a6e;
+        color: #606C38;
     }
 
     .menu img {
@@ -171,7 +171,7 @@
 
     
     .topnav a:hover {
-      color: #d96a6e;
+      color: #606C38;
     }
     
     .active {
@@ -227,7 +227,7 @@
   }
   
   .about-text a {
-      color: #d96a6e;
+      color: #606C38;
       text-decoration: none;
   }
   
@@ -268,7 +268,7 @@
   flex-direction: row;
   align-items: center;
   width: 60%;
-  background-color: #b55c3e;
+  background-color: #606C38;
   padding: 20px;
   border-radius: 0; /* Sharp edges */
   text-align: left;
@@ -280,7 +280,7 @@
 
 /* Alternate block color */
 .timeline-block-alt {
-  background-color: #743131;
+  background-color: #283618;
 }
 
 /* Date formatting */
