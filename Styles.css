@@ -119,66 +119,69 @@ body {
       font-size: 0.9em;
   }
  
-  .topnav {
-    overflow: hidden;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    display: block;
-    width: 100vw;
-    top: 0;
-    z-index: 1;
-  }
-  
-  @media (min-width: 560px) {
-    .topnav {
-      display: none;
-    }
-  }
-  
-  .topnav #myLinks {
-    display: none;
-  }
-  
-  .topnav a {
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: .11em;
-    font-weight: normal;
-    display: block;
-    transition: color 0.2s, background-color 0.2s;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  .topnav p {
-    color: white;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 0.9em;
-    font-weight: normal;
-    display: block;
-    border-top: 10px;
-  }
-  
-  .icon {
-    background: rgba(255, 255, 255, 0);
-    color: white;
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
+.topnav {
+background-color: white;
+position: fixed;
+display: flex;
+flex-direction: column;
+width: 100vw;
+top: 0;
+z-index: 2;
+padding: 1rem;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  
-  .topnav a:hover {
-    color: #606C38;
-  }
-  
-  .active {
-    background-color: rgba(255, 255, 255, 0);
-    font-weight: bold;
-    color: black;
-  }
+/* Show topnav only on small screens */
+@media (min-width: 560px) {
+.topnav {
+  display: none;
+}
+}
+
+.topnav .active {
+color: black;
+font-size: 1em;
+margin-bottom: 0.5rem;
+}
+
+.topnav #myLinks {
+display: none;
+flex-direction: column;
+gap: 0.3rem;
+margin-top: 1rem;
+}
+
+.topnav #myLinks a {
+display: block;
+color: #283610;
+text-decoration: none;
+padding: 0.5rem 0;
+font-size: 1em;
+border-bottom: 1px solid #676767;
+}
+
+.topnav #myLinks a:hover {
+color: #606C38;
+}
+
+.topnav p {
+margin: 0;
+}
+
+.icon {
+position: absolute;
+right: 1rem;
+top: 1.8rem;
+background: transparent;
+border: none;
+padding: 0;
+cursor: pointer;
+}
+
+.burger {
+width: 24px;
+height: 24px;
+}
   
   h1 {
     font-size: 1.2em;
@@ -311,40 +314,57 @@ align-self: center; /* Centers images vertically */
 }
 
 /* Responsive Design: Mobile (≤768px) */
-@media (max-width: 500px) {
+@media (max-width: 768px) {
 .timeline-container {
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-/* Keep images in place */
-.timeline-space {
-    width: auto; /* Keeps original width */
-    justify-content: center;
-    padding: 0; /* Remove extra padding for mobile */
-}
-
-.timeline-img {
-    width: 100%; /* Maintains full width of its container */
-    max-width: 200px;
-    height: auto; /* Prevents distortion */
-    margin: 0; /* No additional margins */
-}
-
-/* Make only blocks wider and center-aligned */
+/* Timeline blocks expand and center */
 .timeline-block,
 .timeline-block-alt {
-    width: 90%;
-    text-align: center;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1rem;
 }
 
 .timeline-content h3,
 .timeline-content p {
-    margin-left: 0;
-    text-align: center;
-}
+  text-align: center;
+  margin: 0.5rem 0;
 }
 
+/* Hide the spacing container (or keep if using images) */
+.timeline-space {
+  display: none;
+}
+
+/* Overlapping image styles */
+.timeline-img {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Position top-left for even blocks */
+.timeline-block .timeline-img {
+  top: -20px;
+  left: -20px;
+}
+
+/* Position bottom-right for alternate blocks */
+.timeline-block-alt .timeline-img {
+  bottom: -20px;
+  right: -20px;
+}
+}
 
 
 /* top Image home*/
@@ -567,7 +587,7 @@ position: relative;
   }
 
   .dataset-description {
-    font-size: 1em;
+    font-size: 0.95em;
     margin-bottom: 0.8rem;
   }
 
