@@ -406,7 +406,7 @@ margin-top: 50px;
 @media (max-width: 500px) {
 .tour .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
@@ -616,7 +616,7 @@ position: relative;
 @media (max-width: 500px) {
 .cv .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
@@ -629,7 +629,7 @@ position: relative;
 @media (max-width: 500px) {
 .cv .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
@@ -642,7 +642,7 @@ position: relative;
 @media (max-width: 500px) {
 .fieldwork .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
@@ -655,7 +655,7 @@ position: relative;
 @media (max-width: 500px) {
 .products .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
@@ -668,7 +668,7 @@ position: relative;
 @media (max-width: 500px) {
 .home .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
@@ -681,7 +681,7 @@ position: relative;
 @media (max-width: 500px) {
 .about .top-image {
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
-  margin-top: 20px; /* Reduce the margin to bring the image closer */
+  margin-top: 50px; /* Reduce the margin to bring the image closer */
 }
 }
 
