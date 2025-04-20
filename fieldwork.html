@@ -8,7 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
+ <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>   
   
   
     <script>
@@ -101,14 +105,114 @@
   </header>
   
       <div class="top-image"></div>
-      
-      <div class="about-me">
-        <div class="about-text">
-            <h1>Lorem ipsum</h1>
-            <p>Lorem ipsum</p>
-        </div>
-    </div>      
-    
+
+       <div style="height: 50px;"></div>
+
+      <h2 style="text-align: center;">Fieldwork Locations</h1></div>
+
+        <div class="map-section">
+        <div id="map" style="height: 500px; width: 100%; max-width: 1000px; margin: 0 auto; border-radius: 6px;"></div>
+        </div>  
+
+<script>
+  // Initialize map
+  var map = L.map('map').setView([7, -74], 6); // Center on Colombia
+
+  // Use Esri World Imagery as base tile
+  var Esri_WorldImagery = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 
+    {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, and the GIS User Community'
+    }
+  );
+
+var circleIcon = L.divIcon({
+  html: '<div style="width:16px;height:16px;background:#606C38;border-radius:50%;border:2px solid white;"></div>',
+  iconSize: [16, 16],
+  className: '' 
+})
+
+  Esri_WorldImagery.addTo(map);
+
+// BCI Hyperspectra
+L.marker([9.15, -79.85],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>Barro Colorado Island</b><br>
+      Tropical moist forest – Sampling for hyperspectral measurements<br>
+      <img src="/img/spectra2.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+// San Martín, Meta
+L.marker([3.69, -73.69],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>San Martin, Meta</b><br>
+      Monitoring electric fishes to study their spatial ecology<br>
+      <img src="/img/fish3.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+// Sierra Nevada de Santa Marta
+L.marker([11.11, -74.03],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>Sierra Nevada de Santa Marta</b><br>
+      Cloud forest – Helping establish a research 1-ha forest plot<br>
+      <img src="/img/cloud1.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+// El Corchal
+L.marker([10.05, -75.53],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>Santuario de Fauna y Flora El Corchal</b><br>
+      Mangrove forest – Carrying out a floristic and structural assessment<br>
+      <img src="/img/mangrove1.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+// San Lorenzo
+L.marker([9.28, -79.97],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>San Lorenzo 6-ha plot</b><br>
+      Tropical moist forest – Crane sampling for hyperspectral measurements<br>
+      <img src="/img/crane2.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+// Parque Natural Metropolitano
+L.marker([8.98, -79.54],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>Parque Natural Metropolitano</b><br>
+      Secondary tropical forest – Crane sampling for hyperspectral measurements<br>
+      <img src="/img/crane1.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+// Jardín Botánico de Cartagena
+L.marker([10.35, -75.4294],  { icon: circleIcon })
+  .addTo(map)
+  .bindPopup(`
+    <div style="text-align:left;">
+      <b>Jardín Botánico de Cartagena</b><br>
+      Seasonally dry tropical forest – Aiding research, education and conservation efforts<br>
+      <img src="/img/cbg1.webp" width="200" style="margin-top:5px; border-radius:8px;">
+    </div>
+  `);
+
+</script>
+     
     <div class="bottom-image"></div>
 
     </body></html>

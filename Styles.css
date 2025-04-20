@@ -529,7 +529,7 @@ position: relative;
   }
 
   .pub-title {
-
+    font-size: 1em
   }
 
   .pub-links {
@@ -612,6 +612,17 @@ position: relative;
   .dataset-links a:hover {
     color: #606C38;
   }
+
+  .map-section {
+    padding: 5vw 10vw;
+    background-color: white;
+  }
+  
+  #map {
+    height: 500px;
+    width: 100%;
+  }
+  
 
 @media (max-width: 500px) {
 .cv .top-image {
