@@ -207,7 +207,7 @@ height: 24px;
 
 /* Profile Photo (Rectangular, Not Circular) */
 .profile-photo {
-    width: 400px;
+    width: 450px;
     height: auto;
     object-fit: cover;
 }
