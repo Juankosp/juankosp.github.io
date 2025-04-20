@@ -237,7 +237,28 @@ height: 24px;
 .about-text a:hover {
     text-decoration: underline;
 }
-  
+
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column;
+    padding: 10vw 5vw;
+    gap: 20px;
+  }
+
+  .profile-photo {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .about-text h1 {
+    font-size: 1.3em;
+  }
+
+  .about-text p {
+    font-size: 0.95em;
+  }
+}
+
 /* Timeline layout */
 .timeline {
 width: 80%;
