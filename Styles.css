@@ -724,3 +724,33 @@ position: relative;
   aspect-ratio: 2 / 1; /* Compromise the aspect ratio for mobile */
 }
 }
+
+.site-footer {
+  width: 100%;
+  text-align: right;
+  font-size: 0.7em;
+  color: #777;
+  background-color: #f8f8f8;
+
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.site-footer p {
+  margin: 0; 
+  padding: 5px 10px; 
+  line-height: 1;
+  text-align: right;
+}
+
+/* For mobile devices, center the footer */
+@media (max-width: 600px) {
+  .site-footer {
+    text-align: center;
+  }
+
+  .site-footer p {
+    text-align: center;
+  }
+}
