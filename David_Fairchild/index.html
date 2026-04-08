@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Fairchild</title>
+  <meta name="description" content="Explore the life and legacy of David Fairchild, the botanist who changed what America eats.">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="site-nav">
+    <span class="brand">David Fairchild</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="../index.html">Personal Site</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="hero-content">
+      <h1>David Fairchild</h1>
+      <p class="subtitle">Thii</p>
+      <a href="#timeline" class="cta">timeline</a>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <h2>Who Was David Fairchild?</h2>
+    <p>
+      lorem ipsum
+    </p>
+
+  </section>
+
+  <!-- ============ TIMELINE (loaded from CSV) ============ -->
+  <div class="section-alt">
+    <section class="section" id="timeline">
+      <h2>Life &amp; Travels</h2>
+      <p class="timeline-intro">
+        This timeline is loaded from
+        <a href="Fairchild_timeline.csv" target="_blank">Fairchild_timeline.csv</a> —
+        edit the CSV and refresh the page to see changes.
+      </p>
+      <!-- Populated by JavaScript from Fairchild_timeline.csv -->
+      <ul class="timeline" id="timeline-list">
+        <li><p>Loading timeline…</p></li>
+      </ul>
+    </section>
+  </div>
+
+
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <p>
+      Created as part of a science outreach program &middot;
+      <a href="../index.html">Back to main site</a>
+    </p>
+  </footer>
+
+  <!-- ============ CSV-DRIVEN TIMELINE SCRIPT ============ -->
+  <script>
+    /**
+     * Reads Fairchild_timeline.csv and renders each row as a timeline entry.
+     * CSV columns: Year, Country, Crop, Event, Source, Attachment
+     *
+     * Edit the CSV → refresh the page → timeline updates automatically.
+     */
+    (function () {
+      const TIMELINE_CSV = 'Fairchild_timeline.csv';
+      const list = document.getElementById('timeline-list');
+
+      // ---- Simple CSV parser (handles quoted fields with commas) ----
+      function parseCSV(text) {
+        const lines = text.split('\n');
+        const headers = parseLine(lines[0]);
+        const rows = [];
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (!line) continue;
+          const values = parseLine(line);
+          const row = {};
+          headers.forEach(function (h, idx) {
+            row[h.trim()] = (values[idx] || '').trim();
+          });
+          rows.push(row);
+        }
+        return rows;
+      }
+
+      function parseLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          var ch = line[i];
+          if (inQuotes) {
+            if (ch === '"' && line[i + 1] === '"') {
+              current += '"';
+              i++;
+            } else if (ch === '"') {
+              inQuotes = false;
+            } else {
+              current += ch;
+            }
+          } else {
+            if (ch === '"') {
+              inQuotes = true;
+            } else if (ch === ',') {
+              result.push(current);
+              current = '';
+            } else {
+              current += ch;
+            }
+          }
+        }
+        result.push(current);
+        return result;
+      }
+
+      // ---- Render one timeline entry ----
+      function renderEntry(row) {
+        var li = document.createElement('li');
+
+        // Year
+        var yearSpan = document.createElement('span');
+        yearSpan.className = 'year';
+        yearSpan.textContent = row.Year || '';
+        li.appendChild(yearSpan);
+
+        // Country badge
+        if (row.Country) {
+          var countrySpan = document.createElement('span');
+          countrySpan.className = 'country';
+          countrySpan.textContent = row.Country;
+          li.appendChild(countrySpan);
+        }
+
+        // Event description
+        var p = document.createElement('p');
+        p.textContent = row.Event || '';
+        li.appendChild(p);
+
+        // Crop tags
+        if (row.Crop && row.Crop !== 'NA') {
+          var tagsDiv = document.createElement('div');
+          tagsDiv.className = 'crop-tags';
+          row.Crop.split(';').forEach(function (crop) {
+            crop = crop.trim();
+            if (!crop) return;
+            var tag = document.createElement('span');
+            tag.className = 'crop-tag';
+            tag.textContent = crop;
+            tagsDiv.appendChild(tag);
+          });
+          li.appendChild(tagsDiv);
+        }
+
+        // Source (small note)
+        if (row.Source) {
+          var sourceSmall = document.createElement('small');
+          sourceSmall.className = 'source';
+          sourceSmall.textContent = row.Source;
+          li.appendChild(sourceSmall);
+        }
+
+        return li;
+      }
+
+      // ---- Fetch & build ----
+      fetch(TIMELINE_CSV)
+        .then(function (res) {
+          if (!res.ok) throw new Error('Could not load ' + TIMELINE_CSV);
+          return res.text();
+        })
+        .then(function (text) {
+          var rows = parseCSV(text);
+          list.innerHTML = '';
+          rows.forEach(function (row) {
+            list.appendChild(renderEntry(row));
+          });
+        })
+        .catch(function (err) {
+          list.innerHTML = '<li><p style="color:red;">Error loading timeline: ' +
+            err.message + '. Make sure Fairchild_timeline.csv is in the same folder.</p></li>';
+        });
+    })();
+  </script>
+
+</body>
+</html>
