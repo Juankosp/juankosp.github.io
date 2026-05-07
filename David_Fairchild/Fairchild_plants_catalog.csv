@@ -1,0 +1,62 @@
+Plant,ScientificName,Category,KeyRegions,ImportanceInStory,Image,Show
+Citron,Citrus medica,Fruit,Corsica,First major documented cuttings mission for USDA,Citron.webp,TRUE
+Mangosteen,Garcinia mangostana,Fruit,Java; Saigon; Panama context,One of Fairchild's signature obsessions and long-term acclimatization challenge,Mangosteen_1.webp,TRUE
+Eucalyptus,Eucalyptus spp.,Tree,Australia,Dryland tree candidate observed for US adaptation,,FALSE
+Kava,Piper methysticum,Beverage crop,Fiji,Ethnobotanical crop documented during Pacific travel,,FALSE
+Chayote,Sechium edule,Vegetable,Jamaica; later US South,It's introduction was limited due to lack of market adoption,Chayote.webp,TRUE
+Mango (general),Mangifera indica,Fruit,Jamaica; Trinidad; India; Saigon,Core tropical fruit focus across multiple expeditions,Mango_1.webp,TRUE
+Mulgoba mango,Mangifera indica cv. Mulgoba,Fruit,India; Florida,Parent line tied to later famous Florida mango seedlings,Mango_2.webp,TRUE
+Alphonso mango,Mangifera indica cv. Alphonso,Fruit,Bombay,High-quality cultivar central to Fairchild's mango collecting,Mango_3.webp,TRUE
+Avocado,Persea americana,Fruit,Chile; Guatemala; Florida; California,Major long-term USDA introduction and industry-forming crop,Avocado_1.webp,TRUE
+Chilean avocado,Persea americana,Fruit,Chile,First avocado introduced through the Section of Seed and Plant Introduction,Avocado_2.webp,TRUE
+Bella sombra,Phytolacca dioica,Tree,Argentina,Fast-growing shade tree ,bella_sombra.webp,TRUE
+Tipu tree,Tipuana tipu,Tree,Argentina/Chaco,Landscape tree later used in California and Florida,,FALSE
+Fava bean,Vicia faba,Pulse,England/Mediterranean,Mediterranean staple considered for US adaptation,,FALSE
+Horse bean,Vicia faba,Pulse,Mediterranean; Egypt,Important cool-season legume in Fairchild's trials,,FALSE
+Broccoli,Brassica oleracea var. italica,Vegetable,Venice,Mediterranean vegetable promoted in US introductions,,FALSE
+Sweet peppers,Capsicum annuum,Vegetable,Italy,Collected and later normalized in US food horticulture,,FALSE
+Sultanina grape,Vitis vinifera cv. Sultanina,Fruit,Padua/Smyrna network,Seedless raisin grape line linked to Thompson Seedless history,Grape_1.webp,TRUE
+Sem hops,Humulus lupulus,Beverage crop,Bohemia,Covertly obtained Bohemian hop variety that helped US brewers surpass European rivals,hops.webp,TRUE
+Egyptian cotton,Gossypium barbadense,Fiber,Egypt; Arizona/California,Transforms Southwest cotton possibilities,,TRUE
+Jannovitch cotton,Gossypium barbadense cv. Jannovitch,Fiber,Egypt,Key seed sample in early Egyptian cotton work,cotton.webp,TRUE
+Sesame,Sesamum indicum,Oilseed,Egypt,Oilseed crop shipped for US dryland and irrigated tests,,FALSE
+Garbanzo,Cicer arietinum,Pulse,Egypt/Spain,Chickpea introduced as drought-tolerant food crop,,FALSE
+Berseem,Trifolium alexandrinum,Forage,Egypt,Fast forage clover introduced for irrigation agriculture,,FALSE
+Pomelo,Citrus maxima,Fruit,Malay Islands; Sekar Island,Important citrus germplasm for grapefruit/pomelo development,,FALSE
+Rice,Oryza sativa,Grain,Canton; later US South,Asian germplasm used in adaptation discussions,,FALSE
+Water chestnut,Eleocharis dulcis,Aquatic crop,Canton,Candidate crop for shallow-water production,,FALSE
+Guava,Psidium guajava,Fruit,Canton/Panama network,Tropical fruit repeatedly observed in introduction contexts,Guava_1.webp,TRUE
+Carob,Ceratonia siliqua,Tree crop,Italy/Mediterranean,Drought-tolerant tree crop sent for subtropical testing,,FALSE
+Hazelnut,Corylus avellana,Nut,Italy/Europe,Temperate nut germplasm in orchard diversification,,FALSE
+Kale,Brassica oleracea var. sabellica,Vegetable,Austria-Hungary,Cold-season leafy crop introduction,,FALSE
+Pistachio,Pistacia vera,Nut,Greece/Levant,First budded trees sent to US; foundational pistachio material,pistacia.webp,TRUE
+Lentil,Lens culinaris,Pulse,Greece/Mediterranean,Dryland pulse included in Mediterranean collecting,,FALSE
+Date palm,Phoenix dactylifera,Fruit,Iraq/Persian Gulf,High-impact desert agriculture introduction effort,Date_1.webp,TRUE
+Nectarine,Prunus persica var. nucipersica,Fruit,Quetta,Seeds and cuttings that fed later US nectarine improvement,Peach.webp,TRUE
+Wasabi,Eutrema japonicum,Condiment crop,Japan,Distinct culinary crop introduced from Japanese mountain valleys,,FALSE
+Loquat,Eriobotrya japonica,Fruit,Japan,High-quality Japanese lines evaluated and distributed,Loquat_1.webp,TRUE
+Zoysia grass,Zoysia spp.,Turf/groundcover,Japan,Important durable turf introduction,,FALSE
+Udo,Aralia cordata,Vegetable,Japan,Distinct Japanese vegetable repeatedly trialed in the US,,FALSE
+Bamboo (multiple spp.),Various (Bambusoideae),Utility plant,Japan; China,"Long-term focus for utility, food shoots, and landscape use",,FALSE
+Flowering cherry,Prunus serrulata complex,Ornamental tree,Japan; Washington DC,Iconic ornamental introduction culminating in Tidal Basin plantings,,FALSE
+Persimmon,Diospyros kaki,Fruit,Japan; China,Expanded with Meyer collections including grindstone types,Persimmon_1.webp,TRUE
+Meyer lemon,Citrus x meyeri,Fruit,China near Beijing,Landmark citrus introduction associated with Frank Meyer,Lemon_1.webp,TRUE
+Soybean,Glycine max,Protein/oil crop,China/Manchuria/Korea,Early formal USDA entries helped normalize soybean in US agriculture,,FALSE
+Asparagus,Asparagus officinalis,Vegetable,East Asia,Included among early Meyer shipments entering USDA pipelines,,FALSE
+Wild apricot,Prunus armeniaca,Fruit,Central Asia/China,Stress-tolerant fruit germplasm in Meyer collections,,FALSE
+Chinese chestnut,Castanea mollissima,Nut tree,China (Gansu and nearby),Blight-resistance relevance for US chestnut crisis,,FALSE
+Walnut,Juglans regia,Nut,China near Tibet,Nut crop diversity through highland collecting,,FALSE
+Jujube,Ziziphus jujuba,Fruit,China,Hardy fruit species in dryland adaptation,,FALSE
+Ginkgo,Ginkgo biloba,Tree/seed crop,China,Collected in final Meyer years; culturally and botanically significant,,FALSE
+Ichang lemon,Citrus ichangensis,Citrus rootstock/fruit,China,Cold-hardy citrus germplasm with long-term breeding value,Lemon_2.webp,TRUE
+Durum wheat,Triticum durum,Grain,Russia to US Plains,Not Fairchild's direct collection alone but central to SPI success narrative,,FALSE
+Alfalfa,Medicago sativa,Forage,Peru to US West,Irrigated-land forage introduction that scaled into major farm crop,,FALSE
+Garcinia tinctoria,Garcinia tinctoria,Fruit tree,Tropical introduction program,Tested as a hardier mangosteen relative when true mangosteen proved too tender,,FALSE
+Pulassan,Nephelium mutabile,Fruit,Tropical introduction program,Close rambutan relative evaluated in Fairchild's mangosteen-relative strategy,,FALSE
+Rambutan,Nephelium lappaceum,Fruit,Tropical introduction program,Tropical fruit relative explored as part of hardy-substitute introductions,,FALSE
+Tung oil tree,Vernicia fordii,Industrial oil crop,China; US South,Seed introductions helped launch the US tung-oil industry,,FALSE
+Mitsumata paper plant,Edgeworthia chrysantha,Fiber/paper plant,Chico; Atlanta,Proved adaptable in trials though not commercialized at scale for paper,,FALSE
+Lacquer sumac,Toxicodendron vernicifluum,Industrial tree,Japan; US trials,Introduced for lacquer potential but curtailed due to severe dermatitis risk,,FALSE
+Japanese matting rush,Juncus effusus,Fiber/craft crop,Japan; South Carolina,Tested as a replacement crop for rice regions but failed commercially,,FALSE
+Chaulmoogra,Hydnocarpus spp.,Medicinal tree,Burma; Siam; American tropics,Seed collection supported medicinal oil supply for leprosy treatment programs,,FALSE
+Dasheen (taro),Colocasia esculenta,Root crop,West Indies; Florida,Consolidated and tested in Brooksville as a major tropical food crop candidate,,FALSE

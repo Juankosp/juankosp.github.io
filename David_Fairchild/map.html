@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Fairchild | Expedition Map</title>
+  <meta name="description" content="Interactive world map of David Fairchild plant collection expeditions by country.">
+
+  <!-- Leaflet CSS — no SRI hash so CDN version mismatches cannot silently block the resource -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+        crossorigin="anonymous">
+
+  <!-- Site styles (beige background, grain, nav, fonts) -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Map fills the full viewport below the fixed 56px nav */
+    #map {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    /* Beige notebook-style popups */
+    .leaflet-popup-content-wrapper {
+      background: #FEF3D6;
+      color: #111;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.28);
+      border: 1px solid var(--color-accent);
+      padding: 0;
+    }
+    .leaflet-popup-tip {
+      background: #FEF3D6;
+    }
+    .leaflet-popup-close-button {
+      color: #555 !important;
+      font-size: 18px !important;
+      padding: 5px 8px !important;
+      top: 4px !important;
+      right: 4px !important;
+    }
+    .leaflet-popup-content {
+      margin: 0;
+      width: auto !important;
+    }
+
+    .popup-inner {
+      padding: 0.85rem 1rem;
+      max-height: 360px;
+      overflow-y: auto;
+      min-width: 260px;
+      max-width: 320px;
+    }
+    .popup-country {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid rgba(40,54,16,0.18);
+    }
+    .popup-event {
+      margin-bottom: 0.9rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+    .popup-event:last-child { margin-bottom: 0; }
+    .popup-year {
+      font-weight: 700;
+      color: var(--color-accent);
+      font-size: 0.88rem;
+    }
+    .popup-event p {
+      margin: 0.2rem 0;
+      color: #333;
+    }
+    .popup-crops {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin: 0.25rem 0;
+    }
+    .popup-crop-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      background: rgba(96,108,56,0.15);
+      color: var(--color-primary);
+      border: 1px solid rgba(96,108,56,0.40);
+    }
+    .popup-crop-sci {
+      display: block;
+      font-style: italic;
+      font-size: 0.68rem;
+      color: var(--color-muted);
+      margin-top: 0.05rem;
+    }
+    .popup-source {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.72rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* Legend */
+    .map-legend {
+      background: rgba(26,26,26,0.90);
+      color: #ddd;
+      padding: 0.6rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      line-height: 1.8;
+      border: 1px solid rgba(96,108,56,0.4);
+    }
+    .map-legend h4 {
+      color: var(--color-accent);
+      font-size: 0.78rem;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: var(--font-heading);
+    }
+    .legend-swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    .legend-hint {
+      margin-top: 0.35rem;
+      font-size: 0.7rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <span class="brand">David Fairchild</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="catalog.html">Catalog</a></li>
+      <li><a href="map.html" class="active">Map</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Loading state — visible before JS runs; Leaflet replaces this once initialized -->
+  <div id="map">
+    <div id="map-loading" style="
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      text-align:center; color:var(--color-primary); font-family:var(--font-body);
+      font-size:0.95rem; pointer-events:none;">
+      <div style="font-size:1.6rem; margin-bottom:0.5rem;">&#9851;</div>
+      Loading map data&hellip;
+    </div>
+  </div>
+
+  <!-- Leaflet JS — cdnjs is highly stable, no SRI hash to silently break loading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous"></script>
+  <!-- TopoJSON client — converts world-atlas bundle to GeoJSON in-browser -->
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js" crossorigin="anonymous"></script>
+  <!-- PapaParse — parses the CSV -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" crossorigin="anonymous"></script>
+
+  <script>
+  'use strict';
+
+  // ── Guard: tell the user exactly what failed to load ─────────────
+  function showMapError(msg) {
+    var el = document.getElementById('map');
+    el.innerHTML =
+      '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);' +
+      'text-align:center;color:var(--color-primary);font-family:var(--font-body);max-width:380px;padding:1.5rem;">' +
+      '<div style="font-size:1.5rem;margin-bottom:0.5rem;">&#9888;</div>' +
+      '<strong>' + msg + '</strong>' +
+      '<p style="font-size:0.8rem;color:var(--color-muted);margin-top:0.5rem;">Make sure you have an internet connection — ' +
+      'the map tiles and world atlas polygons are loaded from CDN.</p></div>';
+  }
+
+  if (typeof L === 'undefined') {
+    showMapError('Leaflet library did not load.');
+    throw new Error('Leaflet not available');
+  }
+  if (typeof topojson === 'undefined') {
+    showMapError('TopoJSON library did not load.');
+    throw new Error('topojson not available');
+  }
+  if (typeof Papa === 'undefined') {
+    showMapError('PapaParse library did not load.');
+    throw new Error('PapaParse not available');
+  }
+
+  // Remove loading indicator now that we know Leaflet is available
+  var loadingEl = document.getElementById('map-loading');
+  if (loadingEl) loadingEl.remove();
+
+  // ── Country name → ISO 3166-1 numeric ────────────────────────────
+  // Covers every Country value in Fairchild_timeline_Map.csv:
+  //   historical names, CSV typos, sub-regional forms ("France - Corsica"),
+  //   compound names ("Austria-Hungary"), multi-country cells ("China; Korea")
+  // ─────────────────────────────────────────────────────────────────
+  var NAME_TO_ISO = {
+    'france':              250,
+    'indonesia':           360,
+    'australia':            36,
+    'jamaica':             388,
+    'trinidad':            780,
+    'trinidad and tobago': 780,
+    'peru':                604,
+    'chile':               152,
+    'argentina':            32,
+    'brazil':               76,
+    'england':             826,
+    'united kingdom':      826,
+    'italy':               380,
+    'egypt':               818,
+    'malaysia':            458,
+    'malasia':             458,  // typo in source CSV
+    'philippines':         608,
+    'china':               156,
+    'manchuria':           156,  // historical region → China
+    'tibet':               156,  // administered territory → China
+    'czech republic':      203,
+    'czechia':             203,
+    'bohemia':             203,
+    'austria':              40,
+    'hungary':             348,
+    'greece':              300,
+    'india':               356,
+    'vietnam':             704,
+    'viet nam':            704,
+    'iraq':                368,
+    'pakistan':            586,
+    'japan':               392,
+    'korea':               410,  // → South Korea polygon
+    'south korea':         410,
+    'siberia':             643,  // historical region → Russia
+    'russia':              643,
+    'burma':               104,
+    'myanmar':             104,
+    'siam':                764,
+    'thailand':            764,
+    'guatemala':           320,
+    'germany':             276,
+    'spain':               724,
+    'south africa':        710,
+    'south africa - cape': 710,
+    'spain - alicante':    724,  // sub-region form used in CSV
+    'puerto rico':         630,  // US territory; may be absent from 50m dataset
+  };
+
+  // ISO numeric → friendly display name for popup headers
+  var ISO_DISPLAY = {
+    250: 'France',          360: 'Indonesia',          36: 'Australia',
+    388: 'Jamaica',         780: 'Trinidad & Tobago',  604: 'Peru',
+    152: 'Chile',            32: 'Argentina',           76: 'Brazil',
+    276: 'Germany',         724: 'Spain',              710: 'South Africa',
+    826: 'United Kingdom',  380: 'Italy',             818: 'Egypt',
+    458: 'Malaysia',        608: 'Philippines',       156: 'China',
+    203: 'Czech Republic',  348: 'Hungary',            40: 'Austria',
+    300: 'Greece',          356: 'India',             704: 'Vietnam',
+    368: 'Iraq',            586: 'Pakistan',          392: 'Japan',
+    410: 'South Korea',     643: 'Russia',            104: 'Myanmar',
+    764: 'Thailand',        320: 'Guatemala',         630: 'Puerto Rico',
+  };
+
+  // ── Parse one Country cell → array of unique ISO codes ───────────
+  // Handles:
+  //   "France - Corsica"                → [250]
+  //   "Austria-Hungary"                 → [40, 348]
+  //   "China; Manchuria; Korea; Siberia"→ [156, 410, 643]
+  //   "Burma; Siam to American tropics" → [104, 764]  (strips "to …")
+  //   "China - Gansu Province; near Tibet" → [156]    (strips "near ")
+  // ─────────────────────────────────────────────────────────────────
+  function parseCountryField(raw) {
+    if (!raw || !raw.trim()) return [];
+    var isos = {};
+
+    raw.split(';').forEach(function (part) {
+      part = part.trim();
+
+      // Strip "near " prefix
+      part = part.replace(/^near\s+/i, '');
+      // Strip " to ..." suffix (e.g. "Siam to American tropics")
+      part = part.replace(/\s+to\s+.+/i, '');
+
+      // Special compound: Austria-Hungary → both countries
+      if (/^austria-hungary$/i.test(part)) {
+        isos[40]  = true;
+        isos[348] = true;
+        return;
+      }
+
+      // Remove sub-region using " - " (keeps "Austria-Hungary" intact above)
+      var base = part.split(' - ')[0].trim().toLowerCase();
+      var iso  = NAME_TO_ISO[base];
+      if (iso != null) isos[iso] = true;
+    });
+
+    return Object.keys(isos).map(Number);
+  }
+
+  // ── Initialise Leaflet ────────────────────────────────────────────
+  var map = L.map('map', {
+    center: [22, 15],
+    zoom: 2,
+    minZoom: 1,
+    maxZoom: 8,
+  });
+
+  // CartoDB Voyager: warm earthy tiles, no API key required
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a>' +
+      ' contributors &copy; <a href="https://carto.com/attributions" rel="noopener">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20,
+    detectRetina: true,
+  }).addTo(map);
+
+  // ── Legend ────────────────────────────────────────────────────────
+  var legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function () {
+    var div = L.DomUtil.create('div', 'map-legend');
+    div.innerHTML =
+      '<h4>Expeditions</h4>' +
+      '<div><span class="legend-swatch" style="background:#606C38;border:1px solid #283610;"></span>Collection site</div>' +
+      '<div><span class="legend-swatch" style="background:#c9c4b5;border:1px solid #999;opacity:0.55;"></span>No record</div>' +
+      '<div class="legend-hint">Click a highlighted country for plant details</div>';
+    return div;
+  };
+  legend.addTo(map);
+
+  // ── Data loading ──────────────────────────────────────────────────
+  var visitedMap = {};  // ISO numeric → [ CSV row objects ]
+  var geoLayer;
+
+  function loadCSV() {
+    return new Promise(function (resolve, reject) {
+      Papa.parse('Fairchild_timeline_Map.csv', {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) { resolve(results.data); },
+        error:    function (err)     { reject(new Error('CSV parse error: ' + err)); },
+      });
+    });
+  }
+
+  function loadWorldAtlas() {
+    return fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('Could not fetch world atlas (' + r.status + ')');
+        return r.json();
+      })
+      .then(function (world) {
+        return fixAntimeridian(topojson.feature(world, world.objects.countries));
+      });
+  }
+
+  // ── Antimeridian fix ─────────────────────────────────────────────
+  // Russia, Fiji, New Zealand and a few others have polygons that
+  // cross ±180° longitude. Leaflet draws a straight horizontal line
+  // across the entire map for those polygons. This pass "unwraps"
+  // each ring so all vertices stay on the same side of the dateline.
+  function fixAntimeridian(geojson) {
+    geojson.features.forEach(function (feature) {
+      var geom = feature.geometry;
+      if (!geom) return;
+      if (geom.type === 'Polygon') {
+        geom.coordinates = geom.coordinates.map(fixRing);
+      } else if (geom.type === 'MultiPolygon') {
+        geom.coordinates = geom.coordinates.map(function (poly) {
+          return poly.map(fixRing);
+        });
+      }
+    });
+    return geojson;
+  }
+
+  function fixRing(ring) {
+    for (var i = 1; i < ring.length; i++) {
+      var prev = ring[i - 1][0];
+      var curr = ring[i][0];
+      if (curr - prev >  180) ring[i] = [curr - 360, ring[i][1]];
+      if (prev - curr >  180) ring[i] = [curr + 360, ring[i][1]];
+    }
+    return ring;
+  }
+
+  function styleFeature(feature) {
+    var visited = !!visitedMap[+feature.id];
+    return {
+      fillColor:   visited ? '#606C38' : '#c9c4b5',
+      fillOpacity: visited ? 0.70      : 0.22,
+      color:       visited ? '#283610' : '#aaa',
+      weight:      visited ? 1.2       : 0.4,
+    };
+  }
+
+  function buildPopupHTML(iso) {
+    var name   = ISO_DISPLAY[iso] || ('Region ' + iso);
+    var events = visitedMap[iso]  || [];
+    var html   = '<div class="popup-inner"><div class="popup-country">' + name + '</div>';
+
+    events.forEach(function (row) {
+      // Split each crop on semicolons, then parse "Common name (Scientific name)"
+      var crops = (row.Crop || '').split(';').map(function (c) { return c.trim(); }).filter(Boolean);
+      var tags  = crops.map(function (c) {
+        var match = c.match(/^(.+?)\s*\(([^)]+)\)\s*$/);
+        if (match) {
+          var common = match[1].trim();
+          var sci    = match[2].trim();
+          return '<span class="popup-crop-tag">' + common +
+                 '<em class="popup-crop-sci">' + sci + '</em></span>';
+        }
+        return '<span class="popup-crop-tag">' + c + '</span>';
+      }).join('');
+
+      html += '<div class="popup-event">';
+      html += '<div class="popup-year">' + (row.Year || '') + '</div>';
+      if (tags) html += '<div class="popup-crops">' + tags + '</div>';
+      html += '<p>' + (row.Event || '') + '</p>';
+      if (row.Source) html += '<span class="popup-source">' + row.Source + '</span>';
+      html += '</div>';
+    });
+
+    html += '</div>';
+    return html;
+  }
+
+  // ── Load both sources in parallel, then draw the map ─────────────
+  Promise.all([loadCSV(), loadWorldAtlas()])
+    .then(function (results) {
+      var rows      = results[0];
+      var countries = results[1];
+
+      // Build visitedMap
+      rows.forEach(function (row) {
+        parseCountryField(row.Country || '').forEach(function (iso) {
+          if (!visitedMap[iso]) visitedMap[iso] = [];
+          visitedMap[iso].push(row);
+        });
+      });
+
+      // Add country polygons
+      geoLayer = L.geoJSON(countries, {
+        style: styleFeature,
+        onEachFeature: function (feature, layer) {
+          if (!visitedMap[+feature.id]) return; // not a visited country; no interaction
+
+          layer.on('mouseover', function () {
+            layer.setStyle({ fillOpacity: 0.88, weight: 2 });
+            layer.bringToFront();
+          });
+          layer.on('mouseout', function () {
+            geoLayer.resetStyle(layer);
+          });
+          layer.on('click', function () {
+            layer
+              .bindPopup(buildPopupHTML(+feature.id), { maxWidth: 340 })
+              .openPopup();
+          });
+        },
+      }).addTo(map);
+    })
+    .catch(function (err) {
+      console.error('Map error:', err);
+      showMapError('Could not load map data: ' + err.message);
+    });
+  </script>
+
+</body>
+</html>

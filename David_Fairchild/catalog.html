@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Fairchild | Plant Catalog</title>
+  <meta name="description" content="Illustrated catalog of plants introduced by David Fairchild and the USDA Section of Seed and Plant Introduction.">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Catalog header ─── */
+    .catalog-header {
+      padding: 7rem 2rem 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .catalog-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--color-primary);
+      line-height: 1.15;
+    }
+    .catalog-header h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--color-accent);
+      margin-top: 0.5rem;
+    }
+    .catalog-header p {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      margin-top: 0.75rem;
+    }
+    .catalog-count {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--color-accent);
+      background: rgba(96,108,56,0.1);
+      border: 1px solid rgba(96,108,56,0.25);
+      border-radius: 3px;
+      padding: 0.1rem 0.5rem;
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* ─── Watercolor grid ─── */
+    .wc-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 4rem;
+    }
+    .wc-section > h2 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      margin-bottom: 2rem;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    .wc-section > h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--color-accent);
+      margin-top: 0.4rem;
+    }
+
+    .wc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem 2rem;
+    }
+
+    .wc-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .wc-item img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      /* drop-shadow respects transparency — paints the shadow around the plant shape */
+      filter: drop-shadow(0 5px 12px rgba(40, 54, 16, 0.13));
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .wc-item:hover img {
+      transform: scale(1.07) translateY(-5px);
+      filter: drop-shadow(0 10px 22px rgba(40, 54, 16, 0.22));
+    }
+
+    /* ─── Plant detail modal ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9000;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      background: var(--color-light);
+      border-radius: 8px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(26, 26, 16, 0.35);
+      padding: 2.5rem;
+      transform: translateY(16px);
+      transition: transform 0.25s ease;
+    }
+    .modal-overlay.is-open .modal-card {
+      transform: translateY(0);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--color-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem 0.4rem;
+    }
+    .modal-close:hover { color: var(--color-primary); }
+    .modal-body {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .modal-img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 16px rgba(40, 54, 16, 0.16));
+    }
+    .modal-category-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      background: rgba(96, 108, 56, 0.10);
+      color: var(--color-accent);
+      border: 1px solid rgba(96, 108, 56, 0.22);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.6rem;
+    }
+    .modal-name {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      color: var(--color-primary);
+      line-height: 1.2;
+      margin: 0 0 0.2rem;
+    }
+    .modal-sci-name {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      margin-bottom: 1.1rem;
+    }
+    .modal-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.25rem 0.8rem;
+      font-size: 0.82rem;
+      margin-bottom: 1.1rem;
+      align-items: baseline;
+    }
+    .modal-meta dt {
+      color: var(--color-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.67rem;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .modal-meta dd {
+      color: var(--color-dark);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .modal-desc {
+      font-size: 0.88rem;
+      color: var(--color-dark);
+      line-height: 1.8;
+      margin: 0;
+      border-top: 1px solid rgba(40, 54, 16, 0.10);
+      padding-top: 1rem;
+    }
+    @media (max-width: 560px) {
+      .modal-body { grid-template-columns: 1fr; }
+      .modal-img-wrap img { max-height: 180px; }
+      .modal-card { padding: 1.5rem 1.2rem; }
+    }
+
+    .wc-name {
+      margin-top: 0.8rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
+    .wc-sci {
+      font-style: italic;
+      font-size: 0.76rem;
+      color: var(--color-muted);
+      margin-top: 0.15rem;
+      line-height: 1.3;
+    }
+
+    .wc-category {
+      margin-top: 0.4rem;
+      display: inline-block;
+      font-size: 0.64rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      background: rgba(96, 108, 56, 0.10);
+      color: var(--color-accent);
+      border: 1px solid rgba(96, 108, 56, 0.22);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    /* ─── Photo gallery ─── */
+    .photos-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+      border-top: 1px solid rgba(40, 54, 16, 0.10);
+    }
+    .photos-section > h2 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      position: relative;
+    }
+    .photos-section > h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--color-accent);
+      margin-top: 0.4rem;
+    }
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .photo-item {
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .photo-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 5px;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.10));
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .photo-item figcaption {
+      font-size: 0.76rem;
+      color: var(--color-muted);
+      margin-top: 0.35rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Placeholder shown when PHOTOS array is empty */
+    .photos-placeholder {
+      border: 1.5px dashed rgba(96, 108, 56, 0.30);
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--color-muted);
+    }
+    .photos-placeholder .ph-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.6rem;
+      opacity: 0.35;
+    }
+    .photos-placeholder p {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .photos-placeholder code {
+      font-family: monospace;
+      font-size: 0.82rem;
+      background: rgba(40, 54, 16, 0.06);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      color: var(--color-primary);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 750px) {
+      .wc-grid        { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.2rem; }
+      .photos-grid    { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .wc-grid        { grid-template-columns: 1fr; }
+      .photos-grid    { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <span class="brand">David Fairchild</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="catalog.html" class="active">Catalog</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Header ── -->
+  <div class="catalog-header">
+    <h1>Plant Catalog</h1>
+    <p>Species introduced through Fairchild&rsquo;s expeditions, illustrated with USDA watercolors.</p>
+    <span class="catalog-count" id="wc-count">Loading&hellip;</span>
+  </div>
+
+  <!-- ── Watercolor icon gallery ── -->
+  <section class="wc-section" id="watercolors">
+    <h2>Illustrated species</h2>
+    <div class="wc-grid" id="wc-grid">
+      <!-- populated by JS: only plants that have a matching watercolor WebP -->
+    </div>
+  </section>
+
+  <!-- ── Field photograph gallery ── -->
+  <section class="photos-section" id="photos">
+    <h2>Field Photographs</h2>
+    <div class="photos-grid" id="photos-grid"></div>
+    <div class="photos-placeholder" id="photos-placeholder">
+      <div class="ph-icon">&#128247;</div>
+      <p>
+        No photographs yet. Create the folder <code>David_Fairchild/img/photos/</code>,
+        drop your images there, then add their filenames to the
+        <code>PHOTOS</code> array at the bottom of this page&rsquo;s source.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Plant detail modal ── -->
+  <div id="plant-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-plant-name">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">&#x2715;</button>
+      <div class="modal-body">
+        <div class="modal-img-wrap">
+          <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-info">
+          <div class="modal-category-badge" id="modal-category"></div>
+          <h2 class="modal-name" id="modal-plant-name"></h2>
+          <div class="modal-sci-name" id="modal-sci"></div>
+          <dl class="modal-meta">
+            <dt>Key regions</dt><dd id="modal-regions"></dd>
+          </dl>
+          <p class="modal-desc" id="modal-desc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Botanical Illustration Credits ── -->
+  <section class="wc-section" id="illustration-credits" style="border-top: 1px solid rgba(40,54,16,0.10); padding-top: 3rem;">
+    <h2 style="font-size:1rem;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;margin-bottom:0.5rem;">Botanical Illustrations — Individual Records</h2>
+    <p style="font-size:0.82rem;color:var(--color-muted);margin-bottom:1rem;">
+      All watercolors are from the USDA Pomological Watercolor Collection (National Agricultural Library).
+      Each record is cited below with artist, title, and permanent handle link.
+    </p>
+    <ul class="sources-list sources-list--compact">
+      <li>Arnold, Mary Daisy. <em>Citrus grandis: Schang Hybrid Pommelo.</em> <a href="https://hdl.handle.net/10113/POM00006374" target="_blank" rel="noopener noreferrer">POM00006374</a></li>
+      <li>Arnold, Mary Daisy. <em>Diospyros: Japan.</em> <a href="https://hdl.handle.net/10113/POM00001330" target="_blank" rel="noopener noreferrer">POM00001330</a></li>
+      <li>Arnold, Mary Daisy. <em>Persea: Persea Americana.</em> <a href="https://hdl.handle.net/10113/POM00004636" target="_blank" rel="noopener noreferrer">POM00004636</a></li>
+      <li>Heiges, Bertha. <em>Vitis: Sultanina Rosea.</em> <a href="https://hdl.handle.net/10113/POM00006094" target="_blank" rel="noopener noreferrer">POM00006094</a></li>
+      <li>Newton, Amanda Almira. <em>Citrus grandis: 11668 Large.</em> <a href="https://hdl.handle.net/10113/POM00006370" target="_blank" rel="noopener noreferrer">POM00006370</a></li>
+      <li>Newton, Amanda Almira. <em>Diospyros: Hachiya.</em> <a href="https://hdl.handle.net/10113/POM00003826" target="_blank" rel="noopener noreferrer">POM00003826</a></li>
+      <li>Newton, Amanda Almira. <em>Diospyros: Ormond.</em> <a href="https://hdl.handle.net/10113/POM00001085" target="_blank" rel="noopener noreferrer">POM00001085</a></li>
+      <li>Newton, Amanda Almira. <em>Garcinia mangostana.</em> <a href="https://hdl.handle.net/10113/POM00007232" target="_blank" rel="noopener noreferrer">POM00007232</a></li>
+      <li>Newton, Amanda Almira. <em>Prunus mume: Bennett.</em> <a href="https://hdl.handle.net/10113/POM00007505" target="_blank" rel="noopener noreferrer">POM00007505</a></li>
+      <li>Newton, Amanda Almira. <em>Psidium guajava: Guava.</em> <a href="https://hdl.handle.net/10113/POM00007460" target="_blank" rel="noopener noreferrer">POM00007460</a></li>
+      <li>Newton, Amanda Almira. <em>Psidium guajava: Red Fleshed.</em> <a href="https://hdl.handle.net/10113/POM00007458" target="_blank" rel="noopener noreferrer">POM00007458</a></li>
+      <li>Passmore, Deborah Griscom. <em>Eriobotrya japonica: Oliver.</em> <a href="https://hdl.handle.net/10113/POM00001163" target="_blank" rel="noopener noreferrer">POM00001163</a></li>
+      <li>Passmore, Deborah Griscom. <em>Eriobotrya japonica: Scala.</em> <a href="https://hdl.handle.net/10113/POM00001038" target="_blank" rel="noopener noreferrer">POM00001038</a></li>
+      <li>Passmore, Deborah Griscom. <em>Garcinia mangostana.</em> <a href="https://hdl.handle.net/10113/POM00007230" target="_blank" rel="noopener noreferrer">POM00007230</a></li>
+      <li>Passmore, Deborah Griscom. <em>Mangifera indica: Haden.</em> <a href="https://hdl.handle.net/10113/POM00004351" target="_blank" rel="noopener noreferrer">POM00004351</a></li>
+      <li>Passmore, Deborah Griscom. <em>Vitis: Sultanina Rosea.</em> <a href="https://hdl.handle.net/10113/POM00006093" target="_blank" rel="noopener noreferrer">POM00006093</a></li>
+      <li>Schutt, Ellen Isham. <em>Mangifera indica: Ameeri; Amiri.</em> <a href="https://hdl.handle.net/10113/POM00004425" target="_blank" rel="noopener noreferrer">POM00004425</a></li>
+      <li>Schutt, Ellen Isham. <em>Phoenix dactylifera: Tafilalt.</em> <a href="https://hdl.handle.net/10113/POM00007408" target="_blank" rel="noopener noreferrer">POM00007408</a></li>
+      <li>Schutt, Ellen Isham. <em>Sechium edule.</em> <a href="https://hdl.handle.net/10113/POM00007159" target="_blank" rel="noopener noreferrer">POM00007159</a></li>
+      <li>Shull, J. Marion. <em>Ananas comosus: Pineapple.</em> <a href="https://hdl.handle.net/10113/POM00007369" target="_blank" rel="noopener noreferrer">POM00007369</a></li>
+      <li>Shull, J. Marion. <em>Mangifera indica: Mulgoba.</em> <a href="https://hdl.handle.net/10113/POM00004456" target="_blank" rel="noopener noreferrer">POM00004456</a></li>
+      <li>Steadman, Royal Charles. <em>Eriobotrya japonica: Champagne.</em> <a href="https://hdl.handle.net/10113/POM00001160" target="_blank" rel="noopener noreferrer">POM00001160</a></li>
+      <li>Steadman, Royal Charles. <em>Prunus persica: Persica Nectarine.</em> <a href="https://hdl.handle.net/10113/POM00005708" target="_blank" rel="noopener noreferrer">POM00005708</a></li>
+      <li>Thompson, Harriet L. <em>Prunus mume: Sharpe.</em> <a href="https://hdl.handle.net/10113/POM00007525" target="_blank" rel="noopener noreferrer">POM00007525</a></li>
+    </ul>
+  </section>
+
+  <footer class="site-footer">
+    <p>David Fairchild project site &middot; <a href="index.html">Back to home</a></p>
+  </footer>
+
+  <!-- PapaParse CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" crossorigin="anonymous"></script>
+
+  <script>
+  'use strict';
+
+  // ── Modal setup ───────────────────────────────────────────────────
+  var modal         = document.getElementById('plant-modal');
+  var modalImg      = document.getElementById('modal-img');
+  var modalName     = document.getElementById('modal-plant-name');
+  var modalSci      = document.getElementById('modal-sci');
+  var modalCategory = document.getElementById('modal-category');
+  var modalRegions  = document.getElementById('modal-regions');
+  var modalDesc     = document.getElementById('modal-desc');
+
+  function openModal(row, imgFile) {
+    modalImg.src              = 'img/watercolors_webp/' + imgFile;
+    modalImg.alt              = row.Plant || '';
+    modalName.textContent     = row.Plant || '';
+    modalSci.textContent      = row.ScientificName || '';
+    modalCategory.textContent = row.Category || '';
+    modalRegions.textContent  = row.KeyRegions || '—';
+    modalDesc.textContent     = row.ImportanceInStory || '';
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('modal-close-btn').focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+  // ── Render watercolor grid from CSV ───────────────────────────────
+  // Reads Image and Show columns added to Fairchild_plants_catalog.csv.
+  // Only rows with Show=True and a non-empty Image filename are displayed.
+  Papa.parse('Fairchild_plants_catalog.csv', {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function (results) {
+      var grid  = document.getElementById('wc-grid');
+      var count = document.getElementById('wc-count');
+      var rows  = results.data;
+
+      var visible = rows.filter(function (row) {
+        var show = (row.Show  || '').trim().toLowerCase();
+        var img  = (row.Image || '').trim();
+        return show === 'true' && img !== '';
+      });
+
+      count.textContent = visible.length + ' illustrated species';
+
+      if (visible.length === 0) {
+        grid.innerHTML = '<p style="color:var(--color-muted);grid-column:1/-1;">No plants to display. Set Show=True and add an Image filename in the CSV.</p>';
+        return;
+      }
+
+      visible.forEach(function (row) {
+        var imgFile  = (row.Image || '').trim();
+        var sci      = (row.ScientificName || '').trim();
+        var category = (row.Category       || '').trim();
+
+        var item = document.createElement('div');
+        item.className = 'wc-item';
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-label', 'View details for ' + row.Plant);
+
+        item.innerHTML =
+          '<img src="img/watercolors_webp/' + imgFile + '" alt="' + (row.Plant || '') + '" loading="lazy">' +
+          '<div class="wc-name">'     + (row.Plant || '') + '</div>' +
+          (sci      ? '<div class="wc-sci">'      + sci      + '</div>' : '') +
+          (category ? '<div class="wc-category">' + category + '</div>' : '');
+
+        var handler = function () { openModal(row, imgFile); };
+        item.addEventListener('click', handler);
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
+        });
+
+        grid.appendChild(item);
+      });
+    },
+    error: function (err) {
+      document.getElementById('wc-grid').innerHTML =
+        '<p style="color:red;grid-column:1/-1;">Could not load catalog CSV: ' + err + '</p>';
+      document.getElementById('wc-count').textContent = 'error';
+    },
+  });
+
+  // ── Field photograph gallery ───────────────────────────────────────
+  // Once you create img/photos/ and add images, populate this array:
+  //   { file: 'filename.jpg', caption: 'Optional caption text' }
+  var PHOTOS = [
+    // Example:
+    // { file: 'mango-tree.jpg', caption: 'Mango tree, Florida 1902' },
+    // { file: 'cherry-blossoms.jpg', caption: 'Tidal Basin cherry blossoms' },
+  ];
+
+  var photosGrid        = document.getElementById('photos-grid');
+  var photosPlaceholder = document.getElementById('photos-placeholder');
+
+  if (PHOTOS.length > 0) {
+    photosPlaceholder.style.display = 'none';
+    PHOTOS.forEach(function (p) {
+      var fig = document.createElement('figure');
+      fig.className = 'photo-item';
+      fig.innerHTML =
+        '<img src="img/photos/' + p.file + '" alt="' + (p.caption || '') + '" loading="lazy">' +
+        (p.caption ? '<figcaption>' + p.caption + '</figcaption>' : '');
+      photosGrid.appendChild(fig);
+    });
+  }
+  </script>
+
+</body>
+</html>
