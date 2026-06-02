@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juankosp.github.io/sitemap.xml
