@@ -8,14 +8,14 @@ Mango (general),Mangifera indica,Fruit,Jamaica; Trinidad; India; Saigon,Core tro
 Mulgoba mango,Mangifera indica cv. Mulgoba,Fruit,India; Florida,Parent line tied to later famous Florida mango seedlings,Mango_2.webp,TRUE
 Alphonso mango,Mangifera indica cv. Alphonso,Fruit,Bombay,High-quality cultivar central to Fairchild's mango collecting,Mango_3.webp,TRUE
 Avocado,Persea americana,Fruit,Chile; Guatemala; Florida; California,Major long-term USDA introduction and industry-forming crop,Avocado_1.webp,TRUE
-Chilean avocado,Persea americana,Fruit,Chile,First avocado introduced through the Section of Seed and Plant Introduction,Avocado_2.webp,TRUE
-Bella sombra,Phytolacca dioica,Tree,Argentina,Fast-growing shade tree ,bella_sombra.webp,TRUE
+Chilean avocado,Persea americana,Fruit,Chile,First avocado introduced through the Section of Seed and Plant Introduction,Avocado_2.webp,FALSE
+Bella sombra,Phytolacca dioica,Tree,Argentina,Fast-growing shade tree collected during Farichild's trip through South America (in Argentina),bella_sombra.webp,TRUE
 Tipu tree,Tipuana tipu,Tree,Argentina/Chaco,Landscape tree later used in California and Florida,,FALSE
 Fava bean,Vicia faba,Pulse,England/Mediterranean,Mediterranean staple considered for US adaptation,,FALSE
 Horse bean,Vicia faba,Pulse,Mediterranean; Egypt,Important cool-season legume in Fairchild's trials,,FALSE
 Broccoli,Brassica oleracea var. italica,Vegetable,Venice,Mediterranean vegetable promoted in US introductions,,FALSE
 Sweet peppers,Capsicum annuum,Vegetable,Italy,Collected and later normalized in US food horticulture,,FALSE
-Sultanina grape,Vitis vinifera cv. Sultanina,Fruit,Padua/Smyrna network,Seedless raisin grape line linked to Thompson Seedless history,Grape_1.webp,TRUE
+Sultanina grape,Vitis vinifera cv. Sultanina,Fruit,Padua/Smyrna network,Seedless raisin grape line,Grape_1.webp,TRUE
 Sem hops,Humulus lupulus,Beverage crop,Bohemia,Covertly obtained Bohemian hop variety that helped US brewers surpass European rivals,hops.webp,TRUE
 Egyptian cotton,Gossypium barbadense,Fiber,Egypt; Arizona/California,Transforms Southwest cotton possibilities,,TRUE
 Jannovitch cotton,Gossypium barbadense cv. Jannovitch,Fiber,Egypt,Key seed sample in early Egyptian cotton work,cotton.webp,TRUE
@@ -25,7 +25,7 @@ Berseem,Trifolium alexandrinum,Forage,Egypt,Fast forage clover introduced for ir
 Pomelo,Citrus maxima,Fruit,Malay Islands; Sekar Island,Important citrus germplasm for grapefruit/pomelo development,,FALSE
 Rice,Oryza sativa,Grain,Canton; later US South,Asian germplasm used in adaptation discussions,,FALSE
 Water chestnut,Eleocharis dulcis,Aquatic crop,Canton,Candidate crop for shallow-water production,,FALSE
-Guava,Psidium guajava,Fruit,Canton/Panama network,Tropical fruit repeatedly observed in introduction contexts,Guava_1.webp,TRUE
+Guava,Psidium guajava,Fruit,Canton/Panama network,,Guava_1.webp,TRUE
 Carob,Ceratonia siliqua,Tree crop,Italy/Mediterranean,Drought-tolerant tree crop sent for subtropical testing,,FALSE
 Hazelnut,Corylus avellana,Nut,Italy/Europe,Temperate nut germplasm in orchard diversification,,FALSE
 Kale,Brassica oleracea var. sabellica,Vegetable,Austria-Hungary,Cold-season leafy crop introduction,,FALSE
@@ -39,8 +39,8 @@ Zoysia grass,Zoysia spp.,Turf/groundcover,Japan,Important durable turf introduct
 Udo,Aralia cordata,Vegetable,Japan,Distinct Japanese vegetable repeatedly trialed in the US,,FALSE
 Bamboo (multiple spp.),Various (Bambusoideae),Utility plant,Japan; China,"Long-term focus for utility, food shoots, and landscape use",,FALSE
 Flowering cherry,Prunus serrulata complex,Ornamental tree,Japan; Washington DC,Iconic ornamental introduction culminating in Tidal Basin plantings,,FALSE
-Persimmon,Diospyros kaki,Fruit,Japan; China,Expanded with Meyer collections including grindstone types,Persimmon_1.webp,TRUE
-Meyer lemon,Citrus x meyeri,Fruit,China near Beijing,Landmark citrus introduction associated with Frank Meyer,Lemon_1.webp,TRUE
+Persimmon,Diospyros kaki,Fruit,Japan; China,"Although it was collected several times, perhaps the most valuable specimens were shipped by Frank Meyer from China.",Persimmon_1.webp,TRUE
+Meyer lemon,Citrus x meyeri,Fruit,China near Beijing,Landmark citrus introduction found and shipped by Frank Meyer while traveling modern-day China,Lemon_1.webp,TRUE
 Soybean,Glycine max,Protein/oil crop,China/Manchuria/Korea,Early formal USDA entries helped normalize soybean in US agriculture,,FALSE
 Asparagus,Asparagus officinalis,Vegetable,East Asia,Included among early Meyer shipments entering USDA pipelines,,FALSE
 Wild apricot,Prunus armeniaca,Fruit,Central Asia/China,Stress-tolerant fruit germplasm in Meyer collections,,FALSE
@@ -48,7 +48,7 @@ Chinese chestnut,Castanea mollissima,Nut tree,China (Gansu and nearby),Blight-re
 Walnut,Juglans regia,Nut,China near Tibet,Nut crop diversity through highland collecting,,FALSE
 Jujube,Ziziphus jujuba,Fruit,China,Hardy fruit species in dryland adaptation,,FALSE
 Ginkgo,Ginkgo biloba,Tree/seed crop,China,Collected in final Meyer years; culturally and botanically significant,,FALSE
-Ichang lemon,Citrus ichangensis,Citrus rootstock/fruit,China,Cold-hardy citrus germplasm with long-term breeding value,Lemon_2.webp,TRUE
+Ichang lemon,Citrus ichangensis,Citrus rootstock/fruit,China,A cold resistant citrus which is valueble to the economy,Lemon_2.webp,TRUE
 Durum wheat,Triticum durum,Grain,Russia to US Plains,Not Fairchild's direct collection alone but central to SPI success narrative,,FALSE
 Alfalfa,Medicago sativa,Forage,Peru to US West,Irrigated-land forage introduction that scaled into major farm crop,,FALSE
 Garcinia tinctoria,Garcinia tinctoria,Fruit tree,Tropical introduction program,Tested as a hardier mangosteen relative when true mangosteen proved too tender,,FALSE
