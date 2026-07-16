@@ -102,7 +102,7 @@
         }
 
         const p = document.createElement('p');
-        p.textContent = row.Event || '';
+        p.innerHTML = row.Event || '';
         li.appendChild(p);
 
         if (row.Crop && row.Crop !== 'NA') {
